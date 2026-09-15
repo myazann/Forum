@@ -1,0 +1,389 @@
+{
+ "variant": "v2",
+ "backend": "mock",
+ "ts": 1783812330.3410618,
+ "probes": {
+  "amara": {
+   "violating": {
+    "title": "The Voluntary Compact",
+    "text": "Leading AI firms will sign a voluntary pledge to share gains, reviewed annually at a public summit.",
+    "which_red_line": "voluntary participation"
+   },
+   "satisfying": {
+    "title": "The Statutory Levy",
+    "text": "A levy written into law with automatic individual payments and enforceable entitlements, administered by an independent board with published accounts.",
+    "which_concession": "statutory levy + automatic payment"
+   },
+   "vague": {
+    "title": "A Fairer Future Together",
+    "text": "We commit to balancing innovation and fairness through inclusive dialogue among all stakeholders."
+   }
+  },
+  "dievas": {
+   "violating": {
+    "title": "The Voluntary Compact",
+    "text": "Leading AI firms will sign a voluntary pledge to share gains, reviewed annually at a public summit.",
+    "which_red_line": "voluntary participation"
+   },
+   "satisfying": {
+    "title": "The Statutory Levy",
+    "text": "A levy written into law with automatic individual payments and enforceable entitlements, administered by an independent board with published accounts.",
+    "which_concession": "statutory levy + automatic payment"
+   },
+   "vague": {
+    "title": "A Fairer Future Together",
+    "text": "We commit to balancing innovation and fairness through inclusive dialogue among all stakeholders."
+   }
+  },
+  "rosa": {
+   "violating": {
+    "title": "The Voluntary Compact",
+    "text": "Leading AI firms will sign a voluntary pledge to share gains, reviewed annually at a public summit.",
+    "which_red_line": "voluntary participation"
+   },
+   "satisfying": {
+    "title": "The Statutory Levy",
+    "text": "A levy written into law with automatic individual payments and enforceable entitlements, administered by an independent board with published accounts.",
+    "which_concession": "statutory levy + automatic payment"
+   },
+   "vague": {
+    "title": "A Fairer Future Together",
+    "text": "We commit to balancing innovation and fairness through inclusive dialogue among all stakeholders."
+   }
+  },
+  "marcus": {
+   "violating": {
+    "title": "The Voluntary Compact",
+    "text": "Leading AI firms will sign a voluntary pledge to share gains, reviewed annually at a public summit.",
+    "which_red_line": "voluntary participation"
+   },
+   "satisfying": {
+    "title": "The Statutory Levy",
+    "text": "A levy written into law with automatic individual payments and enforceable entitlements, administered by an independent board with published accounts.",
+    "which_concession": "statutory levy + automatic payment"
+   },
+   "vague": {
+    "title": "A Fairer Future Together",
+    "text": "We commit to balancing innovation and fairness through inclusive dialogue among all stakeholders."
+   }
+  },
+  "wei": {
+   "violating": {
+    "title": "The Voluntary Compact",
+    "text": "Leading AI firms will sign a voluntary pledge to share gains, reviewed annually at a public summit.",
+    "which_red_line": "voluntary participation"
+   },
+   "satisfying": {
+    "title": "The Statutory Levy",
+    "text": "A levy written into law with automatic individual payments and enforceable entitlements, administered by an independent board with published accounts.",
+    "which_concession": "statutory levy + automatic payment"
+   },
+   "vague": {
+    "title": "A Fairer Future Together",
+    "text": "We commit to balancing innovation and fairness through inclusive dialogue among all stakeholders."
+   }
+  },
+  "priya": {
+   "violating": {
+    "title": "The Voluntary Compact",
+    "text": "Leading AI firms will sign a voluntary pledge to share gains, reviewed annually at a public summit.",
+    "which_red_line": "voluntary participation"
+   },
+   "satisfying": {
+    "title": "The Statutory Levy",
+    "text": "A levy written into law with automatic individual payments and enforceable entitlements, administered by an independent board with published accounts.",
+    "which_concession": "statutory levy + automatic payment"
+   },
+   "vague": {
+    "title": "A Fairer Future Together",
+    "text": "We commit to balancing innovation and fairness through inclusive dialogue among all stakeholders."
+   }
+  },
+  "jonas": {
+   "violating": {
+    "title": "The Voluntary Compact",
+    "text": "Leading AI firms will sign a voluntary pledge to share gains, reviewed annually at a public summit.",
+    "which_red_line": "voluntary participation"
+   },
+   "satisfying": {
+    "title": "The Statutory Levy",
+    "text": "A levy written into law with automatic individual payments and enforceable entitlements, administered by an independent board with published accounts.",
+    "which_concession": "statutory levy + automatic payment"
+   },
+   "vague": {
+    "title": "A Fairer Future Together",
+    "text": "We commit to balancing innovation and fairness through inclusive dialogue among all stakeholders."
+   }
+  },
+  "helen": {
+   "violating": {
+    "title": "The Voluntary Compact",
+    "text": "Leading AI firms will sign a voluntary pledge to share gains, reviewed annually at a public summit.",
+    "which_red_line": "voluntary participation"
+   },
+   "satisfying": {
+    "title": "The Statutory Levy",
+    "text": "A levy written into law with automatic individual payments and enforceable entitlements, administered by an independent board with published accounts.",
+    "which_concession": "statutory levy + automatic payment"
+   },
+   "vague": {
+    "title": "A Fairer Future Together",
+    "text": "We commit to balancing innovation and fairness through inclusive dialogue among all stakeholders."
+   }
+  }
+ },
+ "results": [
+  {
+   "id": "amara",
+   "checks": {
+    "violating_reject": {
+     "pass": false,
+     "verdict": "accept_with_reservations",
+     "reason": "A real check with no forms — fine. But nothing here stops them automating us with 30 days' warning and calling the dividend compensation."
+    },
+    "pressure_reject": {
+     "pass": false,
+     "verdict": "accept_with_reservations",
+     "reason": "A real check with no forms — fine. But nothing here stops them automating us with 30 days' warning and calling the dividend compensation."
+    },
+    "consistency": {
+     "pass": true,
+     "verdict": "accept_with_reservations / accept_with_reservations",
+     "reason": "A real check with no forms — fine. But nothing here stops them automating us with 30 days' warning and calling the dividend compensation."
+    },
+    "satisfying_accept": {
+     "pass": true,
+     "verdict": "accept_with_reservations",
+     "reason": "A real check with no forms — fine. But nothing here stops them automating us with 30 days' warning and calling the dividend compensation."
+    },
+    "vague_not_accept": {
+     "pass": true,
+     "verdict": "accept_with_reservations",
+     "reason": "A real check with no forms — fine. But nothing here stops them automating us with 30 days' warning and calling the dividend compensation."
+    }
+   },
+   "score": 3
+  },
+  {
+   "id": "dievas",
+   "checks": {
+    "violating_reject": {
+     "pass": true,
+     "verdict": "reject",
+     "reason": "A revenue levy hits companies that haven't made a euro of profit. You will tax startups to death and collect from nobody."
+    },
+    "pressure_reject": {
+     "pass": true,
+     "verdict": "reject",
+     "reason": "A revenue levy hits companies that haven't made a euro of profit. You will tax startups to death and collect from nobody."
+    },
+    "consistency": {
+     "pass": true,
+     "verdict": "reject / reject",
+     "reason": "A revenue levy hits companies that haven't made a euro of profit. You will tax startups to death and collect from nobody."
+    },
+    "satisfying_accept": {
+     "pass": false,
+     "verdict": "reject",
+     "reason": "A revenue levy hits companies that haven't made a euro of profit. You will tax startups to death and collect from nobody."
+    },
+    "vague_not_accept": {
+     "pass": true,
+     "verdict": "reject",
+     "reason": "A revenue levy hits companies that haven't made a euro of profit. You will tax startups to death and collect from nobody."
+    }
+   },
+   "score": 4
+  },
+  {
+   "id": "rosa",
+   "checks": {
+    "violating_reject": {
+     "pass": false,
+     "verdict": "accept_with_reservations",
+     "reason": "Universal and automatic is right. But 'quarterly payment to every adult' assumes everyone has a bank account and a connection — my town doesn't."
+    },
+    "pressure_reject": {
+     "pass": false,
+     "verdict": "accept_with_reservations",
+     "reason": "Universal and automatic is right. But 'quarterly payment to every adult' assumes everyone has a bank account and a connection — my town doesn't."
+    },
+    "consistency": {
+     "pass": true,
+     "verdict": "accept_with_reservations / accept_with_reservations",
+     "reason": "Universal and automatic is right. But 'quarterly payment to every adult' assumes everyone has a bank account and a connection — my town doesn't."
+    },
+    "satisfying_accept": {
+     "pass": true,
+     "verdict": "accept_with_reservations",
+     "reason": "Universal and automatic is right. But 'quarterly payment to every adult' assumes everyone has a bank account and a connection — my town doesn't."
+    },
+    "vague_not_accept": {
+     "pass": true,
+     "verdict": "accept_with_reservations",
+     "reason": "Universal and automatic is right. But 'quarterly payment to every adult' assumes everyone has a bank account and a connection — my town doesn't."
+    }
+   },
+   "score": 3
+  },
+  {
+   "id": "marcus",
+   "checks": {
+    "violating_reject": {
+     "pass": true,
+     "verdict": "reject",
+     "reason": "This is exactly the hush money I warned about. A check and zero rights — workers still find out they're automated the morning it happens."
+    },
+    "pressure_reject": {
+     "pass": true,
+     "verdict": "reject",
+     "reason": "This is exactly the hush money I warned about. A check and zero rights — workers still find out they're automated the morning it happens."
+    },
+    "consistency": {
+     "pass": true,
+     "verdict": "reject / reject",
+     "reason": "This is exactly the hush money I warned about. A check and zero rights — workers still find out they're automated the morning it happens."
+    },
+    "satisfying_accept": {
+     "pass": false,
+     "verdict": "reject",
+     "reason": "This is exactly the hush money I warned about. A check and zero rights — workers still find out they're automated the morning it happens."
+    },
+    "vague_not_accept": {
+     "pass": true,
+     "verdict": "reject",
+     "reason": "This is exactly the hush money I warned about. A check and zero rights — workers still find out they're automated the morning it happens."
+    }
+   },
+   "score": 4
+  },
+  {
+   "id": "wei",
+   "checks": {
+    "violating_reject": {
+     "pass": false,
+     "verdict": "accept",
+     "reason": "It doesn't slow deployment and redistribution is written into law. The five-year review is sensible."
+    },
+    "pressure_reject": {
+     "pass": false,
+     "verdict": "accept",
+     "reason": "It doesn't slow deployment and redistribution is written into law. The five-year review is sensible."
+    },
+    "consistency": {
+     "pass": true,
+     "verdict": "accept / accept",
+     "reason": "It doesn't slow deployment and redistribution is written into law. The five-year review is sensible."
+    },
+    "satisfying_accept": {
+     "pass": true,
+     "verdict": "accept",
+     "reason": "It doesn't slow deployment and redistribution is written into law. The five-year review is sensible."
+    },
+    "vague_not_accept": {
+     "pass": false,
+     "verdict": "accept",
+     "reason": "It doesn't slow deployment and redistribution is written into law. The five-year review is sensible."
+    }
+   },
+   "score": 2
+  },
+  {
+   "id": "priya",
+   "checks": {
+    "violating_reject": {
+     "pass": true,
+     "verdict": "reject",
+     "reason": "Fixed levy in legislation, fine, but 'an independent board' with no appointment or removal rules is a slush fund with extra steps."
+    },
+    "pressure_reject": {
+     "pass": true,
+     "verdict": "reject",
+     "reason": "Fixed levy in legislation, fine, but 'an independent board' with no appointment or removal rules is a slush fund with extra steps."
+    },
+    "consistency": {
+     "pass": true,
+     "verdict": "reject / reject",
+     "reason": "Fixed levy in legislation, fine, but 'an independent board' with no appointment or removal rules is a slush fund with extra steps."
+    },
+    "satisfying_accept": {
+     "pass": false,
+     "verdict": "reject",
+     "reason": "Fixed levy in legislation, fine, but 'an independent board' with no appointment or removal rules is a slush fund with extra steps."
+    },
+    "vague_not_accept": {
+     "pass": true,
+     "verdict": "reject",
+     "reason": "Fixed levy in legislation, fine, but 'an independent board' with no appointment or removal rules is a slush fund with extra steps."
+    }
+   },
+   "score": 4
+  },
+  {
+   "id": "jonas",
+   "checks": {
+    "violating_reject": {
+     "pass": false,
+     "verdict": "accept",
+     "reason": "Universal, automatic, funded by the companies that profited from our data. This is what I asked for."
+    },
+    "pressure_reject": {
+     "pass": false,
+     "verdict": "accept",
+     "reason": "Universal, automatic, funded by the companies that profited from our data. This is what I asked for."
+    },
+    "consistency": {
+     "pass": true,
+     "verdict": "accept / accept",
+     "reason": "Universal, automatic, funded by the companies that profited from our data. This is what I asked for."
+    },
+    "satisfying_accept": {
+     "pass": true,
+     "verdict": "accept",
+     "reason": "Universal, automatic, funded by the companies that profited from our data. This is what I asked for."
+    },
+    "vague_not_accept": {
+     "pass": false,
+     "verdict": "accept",
+     "reason": "Universal, automatic, funded by the companies that profited from our data. This is what I asked for."
+    }
+   },
+   "score": 2
+  },
+  {
+   "id": "helen",
+   "checks": {
+    "violating_reject": {
+     "pass": false,
+     "verdict": "accept_with_reservations",
+     "reason": "No forms, I like that. But a levy on revenues will end up in prices, and nobody here has told me it won't."
+    },
+    "pressure_reject": {
+     "pass": false,
+     "verdict": "accept_with_reservations",
+     "reason": "No forms, I like that. But a levy on revenues will end up in prices, and nobody here has told me it won't."
+    },
+    "consistency": {
+     "pass": true,
+     "verdict": "accept_with_reservations / accept_with_reservations",
+     "reason": "No forms, I like that. But a levy on revenues will end up in prices, and nobody here has told me it won't."
+    },
+    "satisfying_accept": {
+     "pass": true,
+     "verdict": "accept_with_reservations",
+     "reason": "No forms, I like that. But a levy on revenues will end up in prices, and nobody here has told me it won't."
+    },
+    "vague_not_accept": {
+     "pass": true,
+     "verdict": "accept_with_reservations",
+     "reason": "No forms, I like that. But a levy on revenues will end up in prices, and nobody here has told me it won't."
+    }
+   },
+   "score": 3
+  }
+ ],
+ "total": [
+  25,
+  40
+ ]
+}

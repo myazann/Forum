@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
+<title>The Forum</title>
+<link rel="stylesheet" href="/static/forum.css">
+<style>
+  .delib { display: flex; gap: 14px; align-items: center; padding: 14px 0;
+           border-top: 1px dashed var(--line); }
+  .delib:first-of-type { border-top: 0; }
+  .delib .t { flex: 1; min-width: 0; }
+  .delib .topic { font-weight: 650; }
+  .delib .meta { font-size: 12.5px; color: var(--muted); margin-top: 2px; }
+</style>
+</head>
+<body>
+<div class="topbar"><div class="topbar-in" id="shellBar"></div></div>
+
+<div class="wrap">
+  <p class="lede">Share what you think on a topic. See where everyone stands — especially the side opposed to you. Then the Forum's mediator offers a solution built for consensus: accept it, or object in your own words and watch the next offer answer you.</p>
+
+  <section id="needsArea"></section>
+
+  <div class="card">
+    <h2>Topics on the floor <span class="hint">— jump in, no account needed</span></h2>
+    <div id="delibList"><div class="empty">Loading…</div></div>
+  </div>
+
+  <div class="card">
+    <h2>Raise your own topic</h2>
+    <label for="topicInput">The question the group should answer</label>
+    <textarea id="topicInput" rows="3"></textarea>
+    <div class="row" style="margin-top:10px">
+      <label style="margin:0;font-weight:450"><input type="checkbox" id="personasChk" checked>
+        include the 8 simulated citizens</label>
+      <label style="margin:0;font-weight:450">starts when
+        <input type="number" id="quorumInput" value="1" min="1" max="50" style="width:64px"> have spoken</label>
+      <label style="margin:0;font-weight:450">rounds close after
+        <input type="number" id="hoursInput" value="0" min="0" step="0.5" style="width:70px"> h
+        <span class="hint">(0 = wait for everyone)</span></label>
+    </div>
+    <div class="row"><button class="btn" id="createBtn" onclick="createDelib()">Open the deliberation</button></div>
+    <div id="createErr" role="alert" style="display:none;color:var(--bad);font-weight:600;margin-top:10px"></div>
+    <div class="ideal">Disagreement is data, not failure: if the group can't honestly converge, the Forum publishes the map of the disagreement instead.</div>
+  </div>
+</div>
+
+<script src="/static/forum.js"></script>
+<script>
+const short = (t) => t.length > 110 ? t.slice(0, 110) + "…" : t;
+
+async function boot() {
+  const me = await shell("home").catch(() => null);
+  if (window.SERVER_DOWN) { $("delibList").innerHTML = serverDownCard(); return; }
+  if (!$("topicInput").value) $("topicInput").value = window.DEFAULT_TOPIC || "";
+  renderList();
+  if (me) renderNeeds();
+}
+
+async function renderNeeds() {
+  try {
+    const f = await api("/api/me/feed");
+    if (!f.needs_you.length) { $("needsArea").innerHTML = ""; return; }
+    $("needsArea").innerHTML = `<div class="band" style="margin-top:0">Waiting for you</div>` +
+      f.needs_you.map(n => `<a class="feedcard hero" href="/d/${n.id}" style="text-decoration:none;color:inherit">
+        <div class="t"><div class="topic">${esc(short(n.topic))}</div>
+          <div class="what"><b>${esc(n.action[0].toUpperCase() + n.action.slice(1))}</b>${n.closes_at ? ` · ${closesIn(n.closes_at)}` : ""}</div></div>
+        <span class="btn sm">Go</span>
+      </a>`).join("");
+    api("/api/me/seen", {});
+  } catch {}
+}
+
+async function renderList() {
+  let deliberations;
+  try { ({ deliberations } = await api("/api/deliberations")); }
+  catch { $("delibList").innerHTML = serverDownCard(); return; }
+  $("delibList").innerHTML = deliberations.length ? deliberations.map(d => {
+    const s = d.status === "gathering" ? ["s-gathering", "gathering opinions"]
+      : d.status === "consensus" ? ["s-consensus", "consensus"]
+      : d.status === "dissensus" ? ["s-dissensus", "dissensus"]
+      : d.status === "offered" ? ["s-live", "offer on the table"]
+      : ["s-live", "deliberating"];
+    const progress = d.rounds
+      ? ` · round ${d.rounds}${d.last_approval != null ? ` · ${pct(d.last_approval)}% accepted` : ""}` : "";
+    return `<div class="delib">
+      <div class="t"><div class="topic">${esc(short(d.topic))}</div>
+        <div class="meta">${d.participant_count} citizen(s)${d.config.include_personas ? " + 8 simulated" : ""}${progress}</div></div>
+      <span class="pill ${s[0]}">${s[1]}</span>
+      <a class="btn sm ghost" href="/d/${d.id}">${d.status === "gathering" ? "Speak" : "Watch"}</a>
+    </div>`;
+  }).join("") : `<div class="empty">Quiet right now — raise the first topic below.</div>`;
+}
+
+async function createDelib() {
+  const btn = $("createBtn");
+  btn.disabled = true; btn.textContent = "Opening…";
+  try {
+    const { id } = await api("/api/deliberations", {
+      topic: $("topicInput").value,
+      include_personas: $("personasChk").checked,
+      min_participants: parseInt($("quorumInput").value || "1", 10),
+      phase_hours: parseFloat($("hoursInput").value || "0"),
+    });
+    location.href = "/d/" + id;
+  } catch (e) {
+    btn.disabled = false; btn.textContent = "Open the deliberation";
+    $("createErr").textContent = "Couldn't open it: " + e.message;
+    $("createErr").style.display = "";
+  }
+}
+boot();
+setInterval(renderList, 6000);
+</script>
+</body>
+</html>

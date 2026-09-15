@@ -1,0 +1,25 @@
+# Virtualenv
+demo-venv/
+venv/
+.venv/
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+
+# Local deliberation database (contains participants' opinions)
+*.db
+*.db-wal
+*.db-shm
+
+# Optimizer output (regenerate with: python -m forum.fidelity --optimize)
+demo/forum/personas_optimized.json
+
+# Editor / OS
+.DS_Store
+.idea/
+.vscode/
+
+# Local Claude Code dev config (absolute machine paths)
+.claude/

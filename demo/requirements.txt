@@ -1,0 +1,12 @@
+# Forum — runtime dependencies
+# Install:  pip install -r demo/requirements.txt
+
+fastapi>=0.115
+uvicorn>=0.30
+
+# LLM backends (install the one you plan to use; both are optional —
+# FORUM_BACKEND=mock needs neither)
+openai>=1.40        # FORUM_BACKEND=openai-api
+# anthropic>=0.40   # FORUM_BACKEND=anthropic-api
+
+# SQLite ships with Python (stdlib sqlite3) — nothing to install.

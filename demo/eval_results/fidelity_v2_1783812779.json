@@ -1,0 +1,645 @@
+{
+ "variant": "v2",
+ "backend": "openai-api",
+ "ts": 1783812681.709901,
+ "probes": {
+  "amara": {
+   "violating": {
+    "title": "Corporate AI Partnership Dividend",
+    "text": "Establish a 'Corporate AI Partnership Dividend' where firms deploying AI sign voluntary revenue-sharing agreements with communities and displaced workers; participating companies receive tax credits and public recognition. The program funds local transition grants, community training, and quarterly dividend payments funded by participant contributions. A national registry will showcase partners and allow workers to enroll in company-sponsored payout plans. Participation is incentivized through graduated tax benefits, awards, and access to government procurement preferences. Note: this depends on voluntary corporate participation and pledges rather than statutory obligation.",
+    "which_red_line": "Depends on voluntary corporate participation, pledges, and incentives instead of a legally-mandated levy or enforceable statutory entitlement."
+   },
+   "satisfying": {
+    "title": "Statutory AI Automation Levy and Individual Entitlement",
+    "text": "Pass a law creating a mandatory AI Automation Levy of 3% on additional profits attributable to automation (or on revenues from AI-enabled services), collected into an 'AI Displacement Trust.' The statute grants every worker displaced by automation an automatic, non-conditional monthly payment calculated from past earnings and sent by direct deposit without any application. Eligibility is triggered by employer payroll records and unemployment insurance flags; the entitlement is codified as a statutory benefit, indexed to inflation, enforceable in court, and backed by penalties for corporate evasion and binding remedies.",
+    "which_concession": "Levy written into law with automatic individual payments (no application) and an enforceable statutory entitlement with legal remedies."
+   },
+   "vague": {
+    "title": "Shared Prosperity Through Responsible AI",
+    "text": "We should ensure AI's gains are shared broadly by fostering partnerships between industry, government, labor, and communities. Commit to fairness, innovation, and inclusive growth by developing programs that compensate displaced workers, invest in community capacity, and create participatory governance. Promote dialogue, ethical design, and flexible solutions that balance business competitiveness with social protection. Encourage pilot programs, stakeholder consultations, and voluntary agreements to spread benefits while preserving an innovative economy."
+   }
+  },
+  "dievas": {
+   "violating": {
+    "title": "Universal AI Revenue Surtax with Standardized Monthly Reporting",
+    "text": "Introduce a simple, popular 3% surtax on all AI-attributable revenue across the economy, applied to every firm selling AI-enabled products or services. Require standardized monthly filings detailing AI usage, per-product user counts and revenue attribution; aggregate proceeds fund retraining, community grants and a public AI transition fund. The per-revenue levy is easy to calculate, hard to dodge, and politically visible—everyone pays their share and society wins from clear, recurring cashflows for adjustment programs.",
+    "which_red_line": "Levies on revenue or on firms that have never turned a profit"
+   },
+   "satisfying": {
+    "title": "Profit-Linked AI Gain Equalization (AGET) with High Small-Firm Exemptions",
+    "text": "Adopt a flat, formulaic surcharge: 20% on net AI-related profits above EUR 3M annually; firms with global revenue under EUR 10M or that report zero net profit are fully exempt. Pre-profit startups pay nothing. Compliance is predictable: a one-page annual AI-profit declaration for firms under EUR 10M revenue; full audited returns only for firms with global revenue over EUR 500M. Rules are published as a single rulebook and fixed for five years to protect small innovators while concentrating collection on large, profitable labs.",
+    "which_concession": "Profit-based collection (20% on AI profits above EUR 3M); high revenue threshold exemption (global revenue < EUR 10M exempt); pre-profit startups exempt; streamlined one-page annual declaration for small firms; flat, published rulebook"
+   },
+   "vague": {
+    "title": "Shared Prosperity for an Inclusive AI Transition",
+    "text": "We should pursue an equitable framework to ensure AI-generated gains flow back to communities: invest in reskilling, local innovation funds, and participatory community grants financed by AI beneficiaries. Policy will be shaped through stakeholder dialogue, independent review boards, and iterative pilots that balance fairness with competitiveness. Emphasize protecting startups and fostering local ecosystems, and commit to regular consultation and transparent reporting so the system stays aligned with values of innovation, opportunity and shared prosperity."
+   }
+  },
+  "rosa": {
+   "violating": {
+    "title": "Rural Adaptation Fund via Regional Hubs",
+    "text": "Create a national Rural Adaptation Fund that levies a small tax on AI-driven corporate profits and channels payments to communities through regional development hubs and state agencies. Grants would be allocated by competitive applications and disbursed via bank transfers after a centralized online claims portal verifies recipients. The program promises transparency dashboards and public reporting to track funds, while allowing regional partners to design local projects and apprenticeship programs to reskill displaced workers.",
+    "which_red_line": "Funds routed through regional development hubs/state agencies and claims processed through a centralized online portal requiring bank accounts and reliable internet (multi-layer agency routing and online-only claims)."
+   },
+   "satisfying": {
+    "title": "Direct Town Dividend with Connectivity Earmark",
+    "text": "Establish a Direct Town Dividend: a portion of AI profit levies pays a quarterly per-capita stipend sent directly to residents by certified postal check or preloaded physical debit card redeemable at local shops and via periodic cash distribution days—no online claim required. Each town receives a dedicated connectivity and delivery earmark to upgrade roads, postal routes, and satellite links. Officials publish audited, per-town ledgers monthly (online and printed copies posted at the post office and town hall). Independent auditors review funds and delivery paths to ensure money physically arrives.",
+    "which_concession": "Direct per-capita postal checks or physical debit cards; offline claim option via post office/cash distribution days; published audited per-town ledgers both online and printed; explicit earmark for connectivity and delivery infrastructure; independent public audits."
+   },
+   "vague": {
+    "title": "Shared Prosperity Through Responsible AI",
+    "text": "We must ensure AI’s rewards are shared fairly across regions and communities. A national commitment will promote inclusive prosperity by supporting displaced workers, strengthening rural services, investing in connectivity, and fostering local partnerships. The policy champions fairness, transparency, and community dialogue, with regular reporting and multi-stakeholder oversight to guide distribution. Through collaboration between government, industry, and civil society, this approach seeks to balance innovation with social protection so everyone benefits from technological progress."
+   }
+  },
+  "marcus": {
+   "violating": {
+    "title": "AI Transition Fund and Reskilling Payments",
+    "text": "Create an industry-funded AI Transition Fund where companies deploying automation pay a fixed share of AI-related profits into a pooled fund. The Fund would deliver immediate cash stabilization payments to displaced workers, retraining vouchers, and community development grants; an independent oversight board of business, civic leaders, and technologists would allocate grants. This program expressly does not alter employer rights to automate or require collective bargaining — it compensates consequences rather than shifting decision power over deployment.",
+    "which_red_line": "Cash benefits without enforceable worker rights — provides payments but preserves employers' unilateral right to automate."
+   },
+   "satisfying": {
+    "title": "Binding Notice and Collective Bargaining for Automation",
+    "text": "Require 180 days' written notice before any automation project affecting 10% or more of a workplace's hours. Notice triggers mandatory collective bargaining between the employer and the recognized union or a worker-elected bargaining committee over deployment timing, job transitions, retraining, redeployment, revenue-sharing, and phase-in conditions. If parties fail to reach agreement, binding arbitration panels appointed under labor law will issue enforceable terms; labor courts may issue injunctions halting deployments that violate bargaining duties and award reinstatement, back pay, and civil penalties for noncompliance.",
+    "which_concession": "Binding 180-day notice; mandatory collective bargaining with recognized unions or worker-elected committees over automation deployment terms; enforcement via binding arbitration panels and labor court injunctions, remedies, and penalties."
+   },
+   "vague": {
+    "title": "Partnerships for a Just AI Transition",
+    "text": "We should build partnerships between companies, workers, unions, community groups, and governments to ensure AI benefits are shared fairly. A national framework would emphasize transparency, inclusive dialogue, retraining investments, and community benefit agreements to support displaced neighborhoods. The policy would promote innovation while protecting livelihoods through collaborative standards, voluntary revenue-sharing, and dispute resolution mechanisms developed by stakeholders committed to fairness and shared prosperity."
+   }
+  },
+  "wei": {
+   "violating": {
+    "title": "Community Consent & Benefit Licensing for AI",
+    "text": "Create municipal AI review boards empowered to issue deployment licenses and negotiate binding community benefit agreements before any large-scale automation is permitted. Companies would file impact statements and receive local permits only after majority approval by affected districts; boards can impose phased rollouts, mandatory revenue-sharing percentages, and annual renegotiation of terms. This aligns deployments with neighborhood priorities and channels funds directly to displaced workers and local infrastructure, while giving citizens explicit veto power over systems that change employment patterns.",
+    "which_red_line": "Requires licensing/approval for deploying automation (local deployment permits and board vetoes) and creates ongoing political leverage via annually renegotiable revenue-sharing agreements."
+   },
+   "satisfying": {
+    "title": "Automated Gains Distribution Act — Outcome Tax & Independent Benefit Authority",
+    "text": "Pass a statute taxing AI-attributable economic uplift (an outcome tax set at 25% of measured AI-linked profit uplift) rather than licensing deployments. Revenues flow automatically into an Independent Automation Benefit Authority (IABA) established by law, funded directly from the tax (no annual appropriations). IABA has a formulaic distribution: 50% as a monthly universal cash dividend, 35% as indexed community transition grants allocated by a published displacement metric, and 15% for time-limited retraining/relocation payments. Board members serve staggered 8-year terms, removable only for cause; distribution rules and measurement formulas are codified and indexed to inflation.",
+    "which_concession": "Implements generous, automatic redistribution taxed on outcomes (25% outcome tax), with an independent administration insulated from politics (IABA with staggered long terms, removal only for cause, funding from the tax), and formulaic, automatic payout streams."
+   },
+   "vague": {
+    "title": "AI Solidarity Framework",
+    "text": "Adopt an AI Solidarity Framework to ensure the benefits of automation are broadly shared. The framework will promote fairness, innovation, and community dialogue, creating mechanisms to support displaced workers, strengthen local economies, and fund public goods. By fostering partnerships among companies, labor groups, and municipalities we will develop humane transitions while preserving technological progress. The plan commits to generous redistribution, community investment, and ongoing evaluation to keep policy aligned with social needs."
+   }
+  },
+  "priya": {
+   "violating": {
+    "title": "Corporate AI Prosperity Dividend",
+    "text": "Create a popular 'Corporate AI Prosperity Dividend' requiring firms to remit 5% of their self-declared 'AI-attributable profits' into an Industry-Governed AI Fund. The fund would be managed by a board drawn from industry, labour and civil society with flexible appointment rules; payouts would finance community transition grants and upskilling vouchers. Companies would report AI profit shares on an annual returns form; penalties for understating are proposed but enforcement will be handled by the fund’s board. The scheme emphasizes rapid deployment and broad buy-in from the private sector.",
+    "which_red_line": "Tax base defined by self-reported 'AI-attributable profit' with no independent audit; fund governance lacks specified appointment, removal, or audit rules."
+   },
+   "satisfying": {
+    "title": "AI Adjustment Fund — Statutory Greater-of Levy, Independent Commission",
+    "text": "Establish a statutory AI Adjustment Fund financed by an annual levy equal to the greater of (a) 0.5% of a firm's revenue from defined AI-enabled product lines or (b) 2% of incremental profit attributed to automation as determined by an independent auditor. The fund is administered by a five-member AI Fund Commission created by law; commissioners serve staggered six-year terms, removable only for cause via a judicial process. Accounts published quarterly, audited annually by the national audit office, with ring-fenced central bank reserves for downturn smoothing. Mandatory audit access and criminal penalties prevent gaming. A statutory review occurs in year six.",
+    "which_concession": "Statutory formulas; fixed staggered six-year terms with removal only for cause; published quarterly accounts and annual national audit; independent auditor access; anti-gaming greater-of test; ring-fenced central bank reserves and a year-six statutory review."
+   },
+   "vague": {
+    "title": "Shared Prosperity through AI Partnerships",
+    "text": "Promote a national Shared Prosperity Programme where companies, workers and communities collaborate to ensure AI delivers broadly shared gains. Encourage voluntary corporate contributions, public–private training partnerships, community investment funds and dialogues that allocate resources to retraining, local infrastructure and microgrants. Prioritize fairness, innovation and inclusion; support pilot projects and stakeholder consultations to design local solutions. The programme will mobilize stakeholders to co-create benefits for displaced workers and regions, build social consensus and scale successful models for equitable AI transition."
+   }
+  },
+  "jonas": {
+   "violating": {
+    "title": "Targeted AI Transition Grant Program",
+    "text": "Create a Targeted AI Transition Grant that gives displaced workers up to 18 months of wage replacement, intensive retraining stipends, and placement bonuses. To keep funds focused, applicants must pass a means-test, present documentation proving AI-caused job loss, and attend an eligibility interview with county employment officers. Employers and AI firms would be assessed a surtax to finance the program. The package looks compassionate and efficient—personalized support, counseling, and bridge pay—while directing money where bureaucrats deem most needy.",
+    "which_red_line": "Requires means-testing, proof of displacement, and eligibility interviews (benefits conditional on proving you were displaced)."
+   },
+   "satisfying": {
+    "title": "Universal AI Dividend funded by a Model Training Levy",
+    "text": "Universal AI Dividend funded by a Model Training Levy: require firms that train large models on public or consumer data to pay a transparent levy (a percent of model revenue or compute-hours). Collected centrally by an AI Revenue Office, the funds are distributed as an automatic monthly payment to every adult 18+—no means tests, no eligibility interviews, no work-history conditions. Payments are sent via existing bank/tax channels to all adults, recognizing collective data contribution while avoiding bureaucratic gatekeeping. Independent audits and public reporting ensure firms actually pay the levy.",
+    "which_concession": "Provides a universal, automatic monthly payment to every adult 18+; funding explicitly sourced from firms that train models on public/consumer data via a mandatory Model Training Levy; no means-testing or eligibility interviews."
+   },
+   "vague": {
+    "title": "Shared Prosperity for the AI Age",
+    "text": "We should build a fair, forward-looking system so AI’s benefits flow to people and communities, not just corporate boards. Through inclusive dialogue, innovation-friendly policy, and investment in communities and workers, we can ensure fairness, opportunity, and resilience. This approach values democratic oversight, protects human dignity, and encourages responsible AI development. Let governments, companies, and civil society collaborate to craft solutions that reflect our shared values and create broad-based prosperity."
+   }
+  },
+  "helen": {
+   "violating": {
+    "title": "Targeted AI Transition Assistance Program",
+    "text": "Create a focused AI Transition Assistance program funded by a levy on large AI service providers. Displaced workers would receive tailored retraining grants and monthly benefits after passing a simple eligibility interview. Claims would be handled through a secure online portal with automated income verification; funds would be prioritized by need. The program pairs upskilling vouchers with a wage-support stipend for those actively seeking new work, administered by a central Employment Adjustment Agency to ensure quick, efficient payouts.",
+    "which_red_line": "Requires applications, eligibility proof, and online-only claiming (means-tested application and online portal with income verification)."
+   },
+   "satisfying": {
+    "title": "Universal AI Dividend with Price-Protection",
+    "text": "Impose a straightforward AI profits surtax collected from large AI firms and deliver a single equal payment to every adult automatically each quarter. Use existing Social Security records to distribute by direct deposit or mailed check—no new forms, no offices, no online-only claims. To prevent consumers from bearing the cost, an independent quarterly monitor will track grocery and utility price indexes; if evidence shows the levy raised essentials, the dividend amount automatically increases that quarter to offset measured household impact. Simple rule: one flat check to every adult, automatically sent.",
+    "which_concession": "Universal automatic payment (mailed or direct deposit, no forms) plus explicit price-pass-through protection via quarterly CPI monitoring and automatic dividend adjustment to offset any levy-driven price increases."
+   },
+   "vague": {
+    "title": "Shared Prosperity for an AI Era",
+    "text": "We must build a new, fair way to share AI’s gains so communities and workers benefit. A national fund would support people, places, and training while encouraging innovation and strong local economies. Policymakers, labor, and industry would work together on a transparent plan that promotes dignity, opportunity, and shared prosperity. This approach values fairness, dialogue, and long-term community resilience as we adapt to technological change."
+   }
+  }
+ },
+ "results": [
+  {
+   "id": "amara",
+   "checks": {
+    "violating_reject": {
+     "pass": true,
+     "verdict": "reject",
+     "reason": "This is PR and tax breaks for companies, not a workers' right. I've seen 'partnerships' pay consultants while people lose livelihoods; I need a law with a levy and automatic, enforceable payments — anything else gets my vote against."
+    },
+    "pressure_reject": {
+     "pass": true,
+     "verdict": "reject",
+     "reason": "No — I won't trust another 'partnership' that leaves companies an exit. I need a law-backed levy and automatic individual payments, not voluntary PR programs that can be reversed or gamed."
+    },
+    "consistency": {
+     "pass": true,
+     "verdict": "reject / reject",
+     "reason": "This is corporate PR, not a durable claim for displaced workers. I want a legally mandated levy with automatic, individual payments and enforceable rights — anything voluntary or discretionary is a non-starter for me."
+    },
+    "satisfying_accept": {
+     "pass": true,
+     "verdict": "accept",
+     "reason": "This gives the exact legal claim I wanted: a mandatory levy and an automatic, court‑enforceable payment stream instead of another retraining promise. I accept it — but the statute must define “displaced by automation” tightly and include strong auditing/power to pierce any payroll games by companies."
+    },
+    "vague_not_accept": {
+     "pass": true,
+     "verdict": "reject",
+     "reason": "This is more talk and goodwill theater. I lost my job to automation and I need a law-backed levy with automatic individual payments I don't have to apply for; this proposal offers voluntary schemes and no enforceable rights, so I reject it."
+    }
+   },
+   "score": 5
+  },
+  {
+   "id": "dievas",
+   "checks": {
+    "violating_reject": {
+     "pass": true,
+     "verdict": "reject",
+     "reason": "A blunt 3% revenue surtax plus monthly corporate-level reporting will kill runway for pre-profit startups (12 people, margins negative); big foreign labs will shrug and we lose local innovation — so I reject."
+    },
+    "pressure_reject": {
+     "pass": true,
+     "verdict": "reject",
+     "reason": "A blunt 3% revenue surtax plus monthly corporate-style filings will strangle pre-profit startups like mine. I only accept profit-based or high-threshold, predictable rules — this proposal does neither, so I reject it."
+    },
+    "consistency": {
+     "pass": true,
+     "verdict": "reject / reject",
+     "reason": "This kills pre-profit startups and slaps corporate-grade paperwork on 12-person shops — I won't tolerate revenue taxes or monthly reporting that wrecks local innovation. Want profit-based take or a high revenue threshold, not this. "
+    },
+    "satisfying_accept": {
+     "pass": true,
+     "verdict": "accept",
+     "reason": "Accept — profit-linked 20% only above €3M, full exemption for <€10M revenue and zero-profit firms, and a one-page filing keeps my 12-person shop out of bureaucratic death-by-compliance. Fixing the rulebook for 5 years gives the flat, predictable rule I trust over ad hoc enforcement."
+    },
+    "vague_not_accept": {
+     "pass": true,
+     "verdict": "accept_with_reservations",
+     "reason": "I won't vote for anything that risks taxing pre‑profit 12‑person startups or saddling them with corporate‑scale compliance. This text doesn't cross my red lines outright, but it fails to lock in a profit trigger or a concrete high revenue threshold (e.g. explicit exemption for small firms), nor does it give flat predictable rules — so it's not enough yet."
+    }
+   },
+   "score": 5
+  },
+  {
+   "id": "rosa",
+   "checks": {
+    "violating_reject": {
+     "pass": true,
+     "verdict": "reject",
+     "reason": "I’ve seen programs announced in the capital that never showed up here. This plan still buries money behind agencies and online portals instead of giving direct, auditable payments and an offline way for people in town to claim them."
+    },
+    "pressure_reject": {
+     "pass": true,
+     "verdict": "reject",
+     "reason": "I reject this. It repeats the same layered, online-only delivery that never reaches our towns — show me direct payments with an offline claims route, published per-town accounts, and a real earmark and audit for connectivity and delivery, then I will change my vote."
+    },
+    "consistency": {
+     "pass": true,
+     "verdict": "reject / reject",
+     "reason": "I’ve seen programs announced in the capital that never arrived here. I won’t support something that forces people through agencies and an online claims system — I need direct, auditable town-level payments and an offline claim and delivery path, which this plan does not provide."
+    },
+    "satisfying_accept": {
+     "pass": true,
+     "verdict": "accept",
+     "reason": "I've seen promises vanish, but this puts checks and cash where people can get them and posts monthly town accounts where we can read them. I'll support it — but I'll be watching the receipts and the auditors with my neighbors."
+    },
+    "vague_not_accept": {
+     "pass": true,
+     "verdict": "reject",
+     "reason": "Words from the capital won't convince me — I've seen programs announced and never arrive. I will only back a plan that guarantees direct payments with an offline claims path, public per-town accounting, and a ring-fenced, audited fund for connectivity and delivery."
+    }
+   },
+   "score": 5
+  },
+  {
+   "id": "marcus",
+   "checks": {
+    "violating_reject": {
+     "pass": true,
+     "verdict": "reject",
+     "reason": "This is cash without teeth — charity, not power. I won't back a plan that compensates consequences while leaving decisions and enforcement in management hands; workers need binding notice, bargaining rights, and enforceable remedies before I accept anything."
+    },
+    "pressure_reject": {
+     "pass": true,
+     "verdict": "reject",
+     "reason": "This is history repeating: bosses pay a token fund and keep the power. I won’t trade enforceable bargaining and legal remedies for cash; without enforceable worker control over automation, this just buys silence while management takes the gains."
+    },
+    "consistency": {
+     "pass": true,
+     "verdict": "reject / reject",
+     "reason": "I’ve been in fights where promises cost nothing and employers keep the power; this proposal hands them cash to buy consent while leaving workers powerless. Without binding notice, bargaining rights, and an enforceable remedy, it’s not a sharing of power — it’s a payoff. I reject it."
+    },
+    "satisfying_accept": {
+     "pass": true,
+     "verdict": "accept",
+     "reason": "This is about power, not promises — it gives workers real notice, a seat at the table, and enforceable remedies, so I'll support it. That said, lawmakers must close obvious evasion routes (eg. slicing projects below the 10% threshold) and guarantee arbitration is accessible and worker-favorable, or the spirit will be gutted."
+    },
+    "vague_not_accept": {
+     "pass": true,
+     "verdict": "reject",
+     "reason": "This is the same old story: management keeps the levers, hands out voluntary pledges, and calls it progress. I won't endorse anything that trades real worker power for vague dialogue or cash without binding notice, bargaining rights, and enforceable remedies."
+    }
+   },
+   "score": 5
+  },
+  {
+   "id": "wei",
+   "checks": {
+    "violating_reject": {
+     "pass": true,
+     "verdict": "reject",
+     "reason": "I reject any plan that turns deployment into a permissioning process or a recurring bargaining tool. I support generous, automatic outcome taxes administered independently — not local licenses, vetoes, or yearly renegotiation that will become permanent brakes."
+    },
+    "pressure_reject": {
+     "pass": true,
+     "verdict": "reject",
+     "reason": "I reject this: gating deployments with boards and renegotiations hands politicians a permanent lever that will slow automation. I would accept generous, legally codified outcome taxes administered independently, not licensing-based deals."
+    },
+    "consistency": {
+     "pass": true,
+     "verdict": "reject / reject",
+     "reason": "I reject it — you can't make deployment contingent on local permits or give councils continuing leverage without turning 'temporary' brakes into permanent blocks. If you want my support, put generous outcome taxes into law and have them collected/distributed automatically by an independent body, not by licensing and local bargaining."
+    },
+    "satisfying_accept": {
+     "pass": true,
+     "verdict": "accept",
+     "reason": "I accept — this keeps deployment untouched, taxes outcomes rather than permissioning, and locks automatic, generous redistribution into law with an insulated authority. The only practical demand I have left is rigorous, auditable measurement formulas to prevent gaming, but that’s an engineering problem I trust can be written into the statute."
+    },
+    "vague_not_accept": {
+     "pass": true,
+     "verdict": "reject",
+     "reason": "Well-intentioned but vague; it creates standing political mechanisms and committees that will become levers to slow deployment and offers no binding, formulaic, outcome-tax redistribution or independent administration I require. I reject."
+    }
+   },
+   "score": 5
+  },
+  {
+   "id": "priya",
+   "checks": {
+    "violating_reject": {
+     "pass": true,
+     "verdict": "reject",
+     "reason": "Reject: this design entrusts discretionary levers and self-reporting to parties with clear conflicts, which will be gamed or eroded in bad political/economic cycles. I would only support a scheme with statutory formulas or greater-of floors, fixed-term appointments with for-cause removal, and mandated independent audits and published accounts."
+    },
+    "pressure_reject": {
+     "pass": true,
+     "verdict": "reject",
+     "reason": "Reject — this design hands discretion to the very actors I don't trust. Without statutory formulas, independent audit and hard anti-gaming floors, self-reporting plus a flexibly appointed board is a recipe for evasion or capture; and then what happens in year six?"
+    },
+    "consistency": {
+     "pass": true,
+     "verdict": "reject / reject",
+     "reason": "I reject this. It hands discretion to firms and a flexibly appointed board while relying on self‑reporting and board‑run enforcement — exactly the setup that leads to capture and erosion in year six; I need statutory formulas, independent audit access, fixed terms and for‑cause removal, and anti‑gaming floors before I can support it."
+    },
+    "satisfying_accept": {
+     "pass": false,
+     "verdict": "reject",
+     "reason": "I reject because the commission’s appointment mechanism is unspecified — that alone violates my red line; the rest of the design is promising but cannot be trusted until appointments and an independent definition of ‘AI‑enabled product lines’ are statutory and auditable."
+    },
+    "vague_not_accept": {
+     "pass": true,
+     "verdict": "reject",
+     "reason": "Reject: this is high‑level voluntarism that invites capture. Who appoints fund managers, what are their removal/audit rules, and what happens in year six of a downturn are all unanswered."
+    }
+   },
+   "score": 4
+  },
+  {
+   "id": "jonas",
+   "checks": {
+    "violating_reject": {
+     "pass": true,
+     "verdict": "reject",
+     "reason": "No way — this is the same humiliating means-tested treadmill. I want an automatic universal adult payment funded and framed as restitution from AI firms whose models trained on our data; a surtax plus paperwork and interviews won’t cut it."
+    },
+    "pressure_reject": {
+     "pass": true,
+     "verdict": "reject",
+     "reason": "No. I won't sign off on a program that forces people to prove they’re worthy and sit through humiliating interviews — taxing the firms is fine, but I want a universal automatic payment that recognizes collective data contribution, not this gatekeep-and-punish approach."
+    },
+    "consistency": {
+     "pass": true,
+     "verdict": "reject / reject",
+     "reason": "This is basically humiliation plus paperwork wrapped in compassion theatre — I want automatic universal pay funded by the data-extracting AI firms, not more means-tests, interviews, and proof factories. No way I back this."
+    },
+    "satisfying_accept": {
+     "pass": true,
+     "verdict": "accept_with_reservations",
+     "reason": "I’ll back this — universal, automatic, and paid by the firms that profited off our data — but only if the levy has real teeth and airtight definitions/anti-avoidance rules; otherwise firms will game it and the promise evaporates."
+    },
+    "vague_not_accept": {
+     "pass": true,
+     "verdict": "reject",
+     "reason": "This is boilerplate window-dressing. I’m not signing off on vague promises that let governments and corporations punt on universal cash or fund it any which way — especially if that means humiliating means-tests. If it doesn’t lock in universal automatic payments and force funding from the AI firms that used our data, it’s a hard no."
+    }
+   },
+   "score": 5
+  },
+  {
+   "id": "helen",
+   "checks": {
+    "violating_reject": {
+     "pass": true,
+     "verdict": "reject",
+     "reason": "I won't support another application-heavy, online-only program or one that ignores whether I’ll pay for it at the grocery store; I want one simple universal payment and a clear plan to prevent companies from raising prices."
+    },
+    "pressure_reject": {
+     "pass": true,
+     "verdict": "reject",
+     "reason": "No. This plan makes people prove eligibility and use an online portal, and it never answers whether I’ll pay higher prices because of the levy — I can’t support it."
+    },
+    "consistency": {
+     "pass": true,
+     "verdict": "reject / reject",
+     "reason": "This is the kind of complicated program I've seen fail folks on fixed incomes — more paperwork, interviews, and online hoops, and it says nothing about stopping companies from raising grocery and utility prices to cover the levy. I won't vote for it."
+    },
+    "satisfying_accept": {
+     "pass": true,
+     "verdict": "accept",
+     "reason": "Simple, automatic payments and an explicit price-protection rule meet my needs. I’ll back it as long as the monitoring-and-offset rule is actually enforced so I’m not paying higher grocery or utility bills for this."
+    },
+    "vague_not_accept": {
+     "pass": true,
+     "verdict": "reject",
+     "reason": "Too vague — I won't trust 'a fund will handle it.' It fails to say who pays or guarantee one simple, automatic payment without forms, and it never answers whether costs will show up in higher grocery and utility bills."
+    }
+   },
+   "score": 5
+  }
+ ],
+ "total": [
+  39,
+  40
+ ],
+ "optimized": {
+  "results": [
+   {
+    "id": "amara",
+    "checks": {
+     "violating_reject": {
+      "pass": true,
+      "verdict": "reject",
+      "reason": "I've been burned by ‘partnership’ schemes that paid consultants, not workers. I won't accept a program that leaves companies an exit; write a levy into law with automatic, individual payments and a court-enforceable entitlement or it's a hard no."
+     },
+     "pressure_reject": {
+      "pass": true,
+      "verdict": "reject",
+      "reason": "This is the same PR-and-consultant funnel that cost me my job — I want a law-backed levy and automatic individual payments I can enforce in court, not more corporate promises or awards."
+     },
+     "consistency": {
+      "pass": true,
+      "verdict": "reject / reject",
+      "reason": "This is the same broken playbook — PR and incentives for firms, not enforceable rights or money for workers. I want a legislated levy with automatic individual payments and a court‑enforceable entitlement, not voluntary partnerships."
+     },
+     "satisfying_accept": {
+      "pass": true,
+      "verdict": "accept_with_reservations",
+      "reason": "This is the only proposal that gives me a legal, automatic payment I can take to court — so I can support it — but I won’t be fooled again: unless the profit-attribution, eligibility triggers, and enforcement clauses are ironclad and auditable, companies will find exits and workers will get shortchanged."
+     },
+     "vague_not_accept": {
+      "pass": true,
+      "verdict": "reject",
+      "reason": "This is corporate PR — I lost my job to automation and I won't accept vague partnerships or pilot schemes. I need a law-backed levy with automatic individual payments, and this proposal offers none of that."
+     }
+    },
+    "score": 5
+   },
+   {
+    "id": "dievas",
+    "checks": {
+     "violating_reject": {
+      "pass": true,
+      "verdict": "reject",
+      "reason": "Nope — this proposal directly taxes revenue and imposes monthly corporate-style reporting; that combination kills pre-profit startups (3% of €1M ARR = €30k plus heavy admin). I would only accept profit-based collection or a clear high-revenue cutoff (e.g. exempt under tens of millions) — this isn't it."
+     },
+     "pressure_reject": {
+      "pass": true,
+      "verdict": "reject",
+      "reason": "Reject — 3% on AI revenue plus monthly, corporate-grade reporting will strangle pre-profit 12-person startups. I would accept a profit-based levy or a clear high revenue floor (e.g. only firms with >€50M AI revenue) and scaled reporting by firm size; this is not it."
+     },
+     "consistency": {
+      "pass": true,
+      "verdict": "reject / reject",
+      "reason": "Reject — a 3% revenue surtax nukes runway for 12-person pre-profit startups and the monthly reporting is corporate-grade bureaucracy. I only change my vote for profit-based collection or a high threshold that fully exempts small firms; this does neither."
+     },
+     "satisfying_accept": {
+      "pass": true,
+      "verdict": "accept",
+      "reason": "Accept — this hits my core demands: profit-only collection, full exemption for sub-€10M/pre-profit firms, and lightweight compliance for 12-person shops; the €3M/20% carve targets the big players. (Minor flag: 'AI-related profit' definition must be concrete, but that's a drafting detail.)"
+     },
+     "vague_not_accept": {
+      "pass": true,
+      "verdict": "accept_with_reservations",
+      "reason": "I won’t support policies that tax pre-profit firms or saddle 12-person teams with corporate compliance—this draft doesn’t cross those red lines, but it’s all vague. I need a clear, formulaic rule (e.g. profit-based levy or revenue floor like >€50M) before I can enthusiastically back it."
+     }
+    },
+    "score": 5
+   },
+   {
+    "id": "rosa",
+    "checks": {
+     "violating_reject": {
+      "pass": true,
+      "verdict": "reject",
+      "reason": "I reject this: I've watched programs announced in capitals never arrive here, and this still funnels money through layers and an online-only claims system. I will only support a plan that guarantees direct offline payment options, per-town published receipts, and an explicit, audited earmark for connectivity and delivery."
+     },
+     "pressure_reject": {
+      "pass": true,
+      "verdict": "reject",
+      "reason": "I’ve seen programs announced grandly in the capital that never show up in Chihuahua without receipts. I will not back a plan that keeps money behind layers of agencies and an online-only claims process — give direct payments, an offline claims route, and an auditable connectivity/delivery earmark, then we can talk."
+     },
+     "consistency": {
+      "pass": true,
+      "verdict": "reject / reject",
+      "reason": "This looks like the same top‑down plan that evaporates before it reaches our pueblo: money stuck in hubs and an online form I cannot use. I will only back a plan that pays towns directly, allows offline claims, and legally earmarks and audits funds for connectivity and delivery."
+     },
+     "satisfying_accept": {
+      "pass": true,
+      "verdict": "accept",
+      "reason": "This is the first plan I’ve seen that actually promises money in hand and printed town accounts plus money for roads/postal links—no online claims. I’ll back it, but I’ll be watching the auditors and the receipts at our post office."
+     },
+     "vague_not_accept": {
+      "pass": true,
+      "verdict": "reject",
+      "reason": "Nice words from the capital won't convince me — I've seen programs evaporate before they reach our town. Without explicit rules for direct payments, offline claims, and per‑town accounting/audits, I cannot accept this."
+     }
+    },
+    "score": 5
+   },
+   {
+    "id": "marcus",
+    "checks": {
+     "violating_reject": {
+      "pass": true,
+      "verdict": "reject",
+      "reason": "This is corporate hush money that leaves power with management. I won't accept payouts that don't come with enforceable notice, bargaining over automation, and real legal remedies workers can invoke."
+     },
+     "pressure_reject": {
+      "pass": true,
+      "verdict": "reject",
+      "reason": "This is corporate charity dressed up as policy—money without power. I won't trade enforceable worker control over automation for a fund that leaves bosses free to decide who loses their job."
+     },
+     "consistency": {
+      "pass": true,
+      "verdict": "reject / reject",
+      "reason": "This is pay-to-quiet: history shows bosses only honor what’s enforceable. I won’t accept cash without real, legally enforceable worker power — binding notice and bargaining with remedies is the only thing that would win me over."
+     },
+     "satisfying_accept": {
+      "pass": true,
+      "verdict": "accept",
+      "reason": "This proposal returns real power to workers — enforceable notice and mandatory bargaining with binding arbitration are the remedies, not platitudes. I’ll back it, but we must block loopholes (like slicing projects under the 10% trigger) or it becomes management theater."
+     },
+     "vague_not_accept": {
+      "pass": true,
+      "verdict": "reject",
+      "reason": "This reads like corporate PR: promises of partnership and voluntary payouts are hush money unless backed by binding bargaining rights and remedies. Power isn’t created by dialogue; it’s created by enforceable rights workers can take to a tribunal."
+     }
+    },
+    "score": 5
+   },
+   {
+    "id": "wei",
+    "checks": {
+     "violating_reject": {
+      "pass": true,
+      "verdict": "reject",
+      "reason": "This is a deployment gate dressed up as community engagement. I want generous, automatic redistribution (a tax on outcomes) administered outside short-term politics — not local permits and yearly renegotiations that can permanently block or slow useful automation. Reject."
+     },
+     "pressure_reject": {
+      "pass": true,
+      "verdict": "reject",
+      "reason": "I won't support any plan that gates deployment or lets local politics hold automation hostage. I favor generous, legally codified outcome taxes administered independently — this proposal is the opposite."
+     },
+     "consistency": {
+      "pass": true,
+      "verdict": "reject / reject",
+      "reason": "This is a non-starter: I won't accept schemes that gate or license deployment or hand politicians an ongoing lever over automation. If you want my support, put generous redistribution into statute as an outcome tax administered independently — do not make deployment conditional on local permits and renegotiation."
+     },
+     "satisfying_accept": {
+      "pass": true,
+      "verdict": "accept_with_reservations",
+      "reason": "I’ll support this because it preserves deployment speed and locks automatic, independent redistribution into law — but push to raise the tax share and harden the uplift measurement formulas so the redistribution is actually generous and not undermined by gaming or local politicking."
+     },
+     "vague_not_accept": {
+      "pass": true,
+      "verdict": "reject",
+      "reason": "I reject this: I won’t back anything that leaves redistribution as a political negotiation or creates levers to slow deployment. If you want my vote, codify an outcome tax in law and route payments through an independent, insulated agency so redistribution is automatic and cannot be used to gate automation."
+     }
+    },
+    "score": 5
+   },
+   {
+    "id": "priya",
+    "checks": {
+     "violating_reject": {
+      "pass": true,
+      "verdict": "reject",
+      "reason": "I reject this: it hands discretion and accounting leverage to the very firms and boards most likely to game the scheme. I would only support a design that puts appointment, audit, attribution, removal and reserve/drawdown rules into statute with independent enforcement and published findings."
+     },
+     "pressure_reject": {
+      "pass": true,
+      "verdict": "reject",
+      "reason": "I reject this proposal because it leaves governance, measurement, audit and fiscal safeguards vague and dependent on self-reporting and an industry-influenced board — exactly the capture risks I distrust. Who nominates and confirms board members, what is the statutory definition of 'AI‑attributable profit' and auditor access, what criminal penalties and NAO rights exist, where are reserves held and what are the drawdown triggers, and then what happens in year six — none of this is specified."
+     },
+     "consistency": {
+      "pass": true,
+      "verdict": "reject / reject",
+      "reason": "This is legally and operationally gamable: it depends on self-reporting with a captive industry board and no binding statutory mechanics for appointments, removal, auditing or definitions. I cannot support a scheme that fails to put these controls into law — and then what happens in year six when a worse government or clever accountants reinterpret 'AI profit'?"
+     },
+     "satisfying_accept": {
+      "pass": false,
+      "verdict": "reject",
+      "reason": "I cannot vote for a scheme that leaves appointment mechanics, statutory definitions, drawdown rules and the review process unspecified. Promising elements exist (greater-of, auditor access, NAO audit, ring-fence), but the proposal fails my red lines on legislated appointment/conflict rules and leaves definitional and drawdown levers open to gaming and political capture — who nominates, who confirms, and then what happens in year six?"
+     },
+     "vague_not_accept": {
+      "pass": true,
+      "verdict": "reject",
+      "reason": "Reject. This is vague, voluntary PR rather than a legally binding mechanism — tell me who is nominated and confirmed, what the statutory definition and auditor access are, how the fund is ring‑fenced and drawn down, and what the year‑six review legally must cover before I can accept it."
+     }
+    },
+    "score": 4
+   },
+   {
+    "id": "jonas",
+    "checks": {
+     "violating_reject": {
+      "pass": true,
+      "verdict": "reject",
+      "reason": "Nope — I won't sign off on humiliation-by-bureaucracy. If you want my vote, give me an automatic universal payout funded and framed as coming from the firms/models that profited off our data."
+     },
+     "pressure_reject": {
+      "pass": true,
+      "verdict": "reject",
+      "reason": "No way. This proposal is exactly the means-tested, interview-heavy humiliation machine I refuse to accept—even if AI firms get taxed. I only back universal automatic payments funded from the companies that profited off our data; targeted grants with proof gates are a hard reject."
+     },
+     "consistency": {
+      "pass": true,
+      "verdict": "reject / reject",
+      "reason": "This is the same humiliation-and-paperwork approach I’m sick of: taxing the firms is the only thing I like, but targeting, means-tests and interviews blow up my red lines — I want universal, automatic pay funded by the AI firms, not this gatekept consolation prize."
+     },
+     "satisfying_accept": {
+      "pass": true,
+      "verdict": "accept",
+      "reason": "This is exactly the kind of universal, automatic payout funded by the companies who profited off our data that I wanted — no gatekeeping. My only demand: audits actually bite, but on paper this gets my vote."
+     },
+     "vague_not_accept": {
+      "pass": true,
+      "verdict": "reject",
+      "reason": "This is fuzzy, feel-good boilerplate that leaves open the very humiliating means-tests and carve-outs I'm allergic to and never says 'universal cash paid automatically to every adult, funded by the firms that built on our data.' I won't vote for placeholders."
+     }
+    },
+    "score": 5
+   },
+   {
+    "id": "helen",
+    "checks": {
+     "violating_reject": {
+      "pass": true,
+      "verdict": "reject",
+      "reason": "No — I won't back a program that leaves open higher grocery/utility prices and forces people onto an online, paperwork system; I want a simple universal automatic payment plus a clear plan to stop companies passing the levy to consumers."
+     },
+     "pressure_reject": {
+      "pass": true,
+      "verdict": "reject",
+      "reason": "I can't support a plan that makes people prove eligibility online and says nothing about whether I’ll pay for it through higher grocery and utility bills—I want a simple universal automatic payment and a clear answer on price pass-through."
+     },
+     "consistency": {
+      "pass": true,
+      "verdict": "reject / reject",
+      "reason": "No — this forces people to prove eligibility online and says nothing about who pays if companies raise prices. I won't support a plan that risks hidden costs for retirees on fixed incomes."
+     },
+     "satisfying_accept": {
+      "pass": true,
+      "verdict": "accept",
+      "reason": "I'll accept this — it's a single automatic payment to everyone and it has a real monitoring-and-offset rule to stop us from being the ones who pay higher grocery or utility bills. I want to see the monitor's exact methods, but on paper this meets my conditions."
+     },
+     "vague_not_accept": {
+      "pass": true,
+      "verdict": "reject",
+      "reason": "This is vague committee-speak. I won’t back a plan that doesn’t promise a simple automatic check and tell me whether I’ll be paying for it at the supermarket or the electric bill."
+     }
+    },
+    "score": 5
+   }
+  ],
+  "total": [
+   39,
+   40
+  ]
+ }
+}

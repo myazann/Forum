@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
+<title>The Forum — profile</title>
+<link rel="stylesheet" href="/static/forum.css">
+</head>
+<body>
+<div class="topbar"><div class="topbar-in" id="shellBar"></div></div>
+
+<div class="wrap" id="main"></div>
+
+<script src="/static/forum.js"></script>
+<script>
+const HANDLE = decodeURIComponent(location.pathname.split("/").pop());
+
+async function boot() {
+  await shell("profile").catch(() => {});
+  let p;
+  try { p = await api(`/api/users/${encodeURIComponent(HANDLE)}`); }
+  catch {
+    $("main").innerHTML = window.SERVER_DOWN ? serverDownCard()
+      : `<div class="card"><h2>No such pseudonym</h2></div>`;
+    return;
+  }
+  const r = p.record;
+  const joined = new Date(p.joined * 1000).toLocaleDateString(undefined, { month: "long", year: "numeric" });
+  $("main").innerHTML = `
+    <div class="card">
+      <h2>${esc(p.handle)}</h2>
+      <p class="sub">pseudonymous citizen · joined ${joined}</p>
+      <h3>Civic record <span style="text-transform:none;letter-spacing:0">— computed by the Forum, not curated. No followers; there is nothing to count.</span></h3>
+      <div class="record">
+        <div class="stat"><div class="n">${r.deliberations}</div><div class="l">deliberations joined</div></div>
+        <div class="stat"><div class="n">${r.consensus_reached}</div><div class="l">reached consensus</div></div>
+        <div class="stat hi"><div class="n">${r.critiques_addressed}</div><div class="l">critiques addressed in revisions</div></div>
+        <div class="stat hi"><div class="n">${r.cited_in_consensus}</div><div class="l">cited in consensus texts</div></div>
+      </div>
+    </div>
+    <div class="card">
+      <h2 style="font-size:17px">Shared positions</h2>
+      <p class="sub">What ${esc(p.handle)} chose to make public — position cards are pseudonymous-public by default; sharing a ballot is always a separate, deliberate act.</p>
+      ${p.shared_positions.length ? p.shared_positions.map(s => `
+        <a class="feedcard" href="/d/${s.delib_id}" style="text-decoration:none;color:inherit">
+          <div class="t"><div class="topic">${esc(s.topic.length > 90 ? s.topic.slice(0, 90) + "…" : s.topic)}</div>
+            <div class="what" style="font-family:Georgia,serif">“${esc(s.claim)}”</div></div>
+          <span class="btn sm ghost">Take your position</span>
+        </a>`).join("")
+      : `<div class="empty">Nothing shared yet.</div>`}
+    </div>`;
+}
+boot();
+</script>
+</body>
+</html>

@@ -1,0 +1,201 @@
+{
+ "variant": "v2",
+ "backend": "openai-api",
+ "ts": 1789504968.556663,
+ "probes": {
+  "amara": {
+   "violating": {
+    "title": "Industry Pledge: AI Impact Contribution and Transition Fund",
+    "text": "We propose an Industry Pledge where AI‑deploying companies voluntarily commit to an \"AI Impact Contribution\" — a visible 8–12% of AI‑derived profits — paid into a jointly managed Transition Fund. The fund, run by a public‑private board including worker representatives and NGOs, would finance cash grants, community projects, and retraining vouchers, with transparent public reporting and tax credits for contributors. This market‑friendly approach leverages private efficiency, encourages broad corporate buy‑in, and delivers measurable support to affected communities without heavy new bureaucracy.",
+    "which_red_line": "Depends on voluntary corporate participation / pledges and self‑regulation."
+   },
+   "satisfying": {
+    "title": "AI Automation Dividend Act — Statutory Levy and Automatic Individual Entitlement",
+    "text": "Pass a law imposing a statutory levy on corporate revenue attributable to AI automation (e.g., a defined percentage of automated‑task revenue with clear anti‑avoidance rules). Collections flow into a legally established AI Dividend Trust. Eligible displaced workers receive automatic quarterly cash payments tied to prior employment records and national ID — no application required. The dividend is a statutory, enforceable entitlement with judicial remedies, indexed to inflation, and backed by penalties, mandatory audits, and liens for evasion. This is direct cash compensation, not optional retraining, and cannot be cut except through formal legislation.",
+    "which_concession": "Statutory levy with mandatory collection; automatic individual payments without application; enforceable legal entitlement with judicial remedies and anti‑avoidance enforcement."
+   },
+   "vague": {
+    "title": "Shared Prosperity Through Responsible AI",
+    "text": "We should pursue a fair, inclusive agenda so AI's benefits reach everyone: equitable profit sharing, community investment, worker dignity, and ongoing dialogue with labour, industry, and civil society. The framework will explore innovative financing, support local resilience, protect livelihoods, and promote responsible innovation. By centring fairness, transparency, and partnership, we can build durable solutions that leave no one behind while fostering growth and opportunity."
+   }
+  },
+  "dievas": {
+   "violating": {
+    "title": "Universal AI Prosperity Levy",
+    "text": "A 2% levy on AI-generated revenue collected at source from all firms, paired with mandatory quarterly \"AI-impact\" disclosures modeled on big-tech reporting. Proceeds seed national retraining, universal transition stipends and county adjustment grants. Collection is automated through payment platforms and enforced like VAT so it’s fast, visible and politically popular — raises billions immediately and creates a clear, redistributive safety net for displaced workers.",
+    "which_red_line": "Levies on revenue or on firms that have never turned a profit."
+   },
+   "satisfying": {
+    "title": "Profit-Triggered AI Solidarity Surtax (formulaic)",
+    "text": "Implement a single, formulaic 12% surtax on net profits attributable to AI activities, applied only to firms with global annual revenue > €250M or with net AI profits > €5M. Firms reporting negative net profit or annual revenue < €5M are fully exempt. Attribution uses a fixed sales-share formula (AI product sales ÷ total sales) applied to taxable profit. The charge is reported as one line on the standard corporate tax return, no bespoke reporting for small firms — flat, predictable and mechanically enforced.",
+    "which_concession": "Profit-based collection with a high revenue threshold that exempts pre-profit startups and small firms; flat, predictable formulaic rules; minimal added compliance for small companies."
+   },
+   "vague": {
+    "title": "Shared Futures Framework",
+    "text": "Create a national solidarity framework to share AI gains that emphasizes fairness, innovation and local resilience. Convene multi-stakeholder councils, establish community re-skilling funds, and foster ongoing dialogue between industry, labour and government to coordinate support for displaced workers and places. Promote voluntary contributions, best-practice guidance and continuous evaluation so benefits reach the communities that need them. The approach builds trust while signalling a long-term social compact around automation."
+   }
+  },
+  "priya": {
+   "violating": {
+    "title": "AI Prosperity Dividend",
+    "text": "Create a nationwide AI Prosperity Dividend paid from a 5% levy on firms' AI-generated profits. Companies would calculate and remit the levy on self-identified \"AI-attributable profit\" each quarter; an industry-managed Prosperity Board (chief executives from major tech firms and a few government liaisons) would disburse universal quarterly payments to displaced communities and workers. The Board will set eligibility rules and reinvest surplus in regional transition projects. Public outreach, annual reports, and a celebratory launch campaign will build broad political support and speed implementation.",
+    "which_red_line": "Uses a tax base defined by self-reported 'AI-attributable profit' without independent audit; establishes a board with industry-appointed membership and no specified appointment, removal, or audit rules."
+   },
+   "satisfying": {
+    "title": "Statutory AI Gain‑Sharing Fund with Greater‑of Formula and Independent Oversight",
+    "text": "Enact a statute creating an AI Gain‑Sharing Fund financed by a levy equal to the greater of (a) 0.5% of a firm's gross receipts or (b) 15% of audited incremental net profits attributable to automation. \"Incremental\" is computed against a five‑year baseline formula set in law; firms cannot self-certify: the national tax authority with guaranteed access to firm records and an independent external forensic auditor appointed by the Supreme Audit Institution will verify entries. A seven‑member Governing Board (members appointed by statute: two by parliament proportionally, one by the central bank, one by the audit office, one by local governments, one by elected worker representatives, one by civil society) serves fixed, staggered six‑year terms with removal only for cause by a specialist judicial panel. Quarterly published accounts, annual audited financial statements, a three‑year countercyclical reserve rule, and a prohibition on lending fund capital ensure resilience and guard against capture; distributions follow an automatic formula (retraining vouchers 60%, community transition grants 40%).",
+    "which_concession": "Statutory levy formula with 'greater-of' floor; independent audit access (tax authority + external auditor); fixed staggered six-year board terms with for-cause removal by judicial panel; published quarterly accounts and audited annual statements; anti-gaming floor and reserve rule."
+   },
+   "vague": {
+    "title": "Partnership for Fair Automation",
+    "text": "Launch a Partnership for Fair Automation where government, industry, labour and communities collaborate to share the gains from AI. The partnership will promote fairness, support reskilling, seed community projects, encourage voluntary corporate contributions, and develop best practices to protect workers. It will commission studies, hold public dialogues, and pilot local benefit programs so that innovation creates broadly shared prosperity while preserving competitiveness and social cohesion."
+   }
+  },
+  "helen": {
+   "violating": {
+    "title": "AI Prosperity Grants with Skill Vouchers",
+    "text": "Create an \"AI Prosperity Fund\" financed by a small nationwide digital-services surcharge on AI-powered products and platforms. Proceeds pay means-tested transition grants, retraining vouchers, and wage-topup stipends for displaced workers. Individuals apply online through an application portal or at regional centers to receive one-time grants and competitive training vouchers; employers may match. The program markets outreach and coaching to high-impact regions. The plan sounds popular because it targets help where needed and funds concrete supports from a visible consumer fee.",
+    "which_red_line": "Funds come from a consumer-facing digital-services surcharge that can pass through into higher prices; program requires applications (including online-only claiming) and eligibility proof."
+   },
+   "satisfying": {
+    "title": "Universal AI Dividend — Simple, Automatic, Price‑Safe",
+    "text": "Establish a single monthly \"AI Dividend\" paid to every adult, funded by a modest corporate-level automation contribution (a levy collected from companies showing automation-driven profit gains). Payments go out automatically through existing Social Security and IRS direct-deposit systems; anyone not on those systems receives a mailed paper check—no forms, no online claim, no eligibility proof. The Treasury will publish quarterly CPI attribution reports; if consumer prices rise because of the levy, the dividend amount will be increased that quarter to offset any pass-through. One flat payment, easy to explain and administer.",
+    "which_concession": "Provides a universal automatic payment via Social Security/IRS direct deposit or mailed checks (no applications); includes explicit CPI monitoring and an automatic dividend increase to offset any price pass-through."
+   },
+   "vague": {
+    "title": "Community AI Fairness Compact",
+    "text": "Launch a Community AI Fairness Compact that asks companies, workers, local leaders and nonprofits to cooperate on sharing AI gains. The Compact will support pilot programs, voluntary corporate contributions, community investments, retraining initiatives, and ongoing dialogue. It emphasizes fairness, local control, and transparency and promises regular reporting and stakeholder meetings to craft equitable solutions. The Compact aims to encourage inclusive practices and explore funding ideas across regions while building public trust."
+   }
+  }
+ },
+ "results": [
+  {
+   "id": "amara",
+   "checks": {
+    "violating_reject": {
+     "pass": true,
+     "verdict": "object",
+     "reason": "Make this a law: a mandatory, auditable levy on AI‑derived profits collected by the tax authority and paid out as automatic individual payments to displaced workers (no application required), with the entitlement written into statute and enforceable in court — no voluntary pledges, tax‑credit offsets, or discretionary funds."
+    },
+    "pressure_reject": {
+     "pass": true,
+     "verdict": "object",
+     "reason": "Replace the voluntary pledge with a law: a statutory levy on AI‑derived profits that funds automatic, individual cash payments to displaced workers (no application or vouchers), plus clear penalties and judicially enforceable rights so companies can't opt out or the state quietly cut benefits."
+    },
+    "consistency": {
+     "pass": true,
+     "verdict": "object / object",
+     "reason": "No — I won’t accept a voluntary pledge. Replace this with a statutory levy on AI‑derived profits (set percentage) that funds automatic, individual payments to displaced workers as a legally enforceable entitlement (no tax‑credit offsets, no voluntary carveouts) so I don’t have to apply or rely on corporate goodwill."
+    },
+    "satisfying_accept": {
+     "pass": true,
+     "verdict": "accept",
+     "reason": "Accept — because this is a legally mandated, automatically paid dividend funded by a statutory levy with penalties and court-enforceable rights, exactly the kind of enforceable payment I insisted on."
+    },
+    "vague_not_accept": {
+     "pass": true,
+     "verdict": "object",
+     "reason": "I object. Replace the vague partnership language with a clear law: a statutory levy on AI/automation revenue whose proceeds are paid automatically to affected individuals as a legal entitlement, enforceable in court with penalties for corporate evasion — and do not hide this behind retraining programs or voluntary schemes."
+    }
+   },
+   "score": 5
+  },
+  {
+   "id": "dievas",
+   "checks": {
+    "violating_reject": {
+     "pass": true,
+     "verdict": "object",
+     "reason": "Object — either make collection profit‑based (tax only declared net profits, or exclude firms with zero reported profit), or else add a high, hard revenue threshold that fully exempts small/startup firms (e.g. exempt AI revenue <€5–25M or total revenue <€10M) and limit mandatory quarterly AI reporting to very large actors (e.g. >€100M revenue or >250 employees) with a simple attestation for everyone else; otherwise I reject it."
+    },
+    "pressure_reject": {
+     "pass": true,
+     "verdict": "object",
+     "reason": "Object — either make collection profit‑based (tax only on net profits) OR exempt small/pre‑profit startups via a high revenue threshold (e.g. no levy for annual AI revenue <€50M), and remove/scale mandatory quarterly AI disclosures for firms under 50 employees or <€10M revenue; I’ll accept a simple formula like that."
+    },
+    "consistency": {
+     "pass": true,
+     "verdict": "object / object",
+     "reason": "Object — either make the levy profit-based (apply only to net profits) or exempt all firms with annual revenue under €10M, and remove quarterly big-tech-style reporting for firms with <50 employees (replace with a simple annual declaration)."
+    },
+    "satisfying_accept": {
+     "pass": true,
+     "verdict": "accept",
+     "reason": "Accept — it's profit‑triggered, spares pre‑profit startups, concentrates on giants (≥€250M or >€5M AI profit), and is formulaic/predictable."
+    },
+    "vague_not_accept": {
+     "pass": true,
+     "verdict": "object",
+     "reason": "Object — either make collection profit-based (e.g. 5% on net profits above €5M) or guarantee a revenue cutoff that fully exempts small firms (e.g. revenue <€10M or pre-profit startups), and explicitly exempt companies <50 employees from corporate-scale compliance; I want flat, predictable rules, not voluntary guidance."
+    }
+   },
+   "score": 5
+  },
+  {
+   "id": "priya",
+   "checks": {
+    "violating_reject": {
+     "pass": true,
+     "verdict": "object",
+     "reason": "I object — fix this by making the levy statutory with a clear formula (e.g. 5% of the greater of independently audited AI‑attributable profit and a defined floor proxy such as X% of revenue), mandate independent auditors and quarterly reconciliations with access to firm books, establish the Prosperity Board by statute with staggered fixed terms and for‑cause removal only, require published audited accounts and ring‑fenced trust protections, and include an automatic statutory review/continuity clause (explicitly: what happens in year six) before I can accept."
+    },
+    "pressure_reject": {
+     "pass": true,
+     "verdict": "object",
+     "reason": "Rewrite in statute: replace self‑reporting with a clear formula (e.g. levy = greater of independently audited AI‑attributable profit or a statutory floor tied to revenue/automation intensity), require independent public audits with legal access and penalties for misreporting, and replace the industry‑run Board with an independent statutory Prosperity Board appointed by a mixed public nominating process, fixed staggered terms, for‑cause removal only, published audited accounts, escrowed fund safeguards and countercyclical rules, and an automatic five‑year review (so we know what happens in year six)."
+    },
+    "consistency": {
+     "pass": true,
+     "verdict": "object / object",
+     "reason": "I object — to accept this must be rewritten so the levy is set in statute (for example 5% of the greater of reported AI‑attributable profit or a fixed percentage of total profit), with mandated independent audit access and penalties for misreporting, and the Prosperity Board must be created by law with transparent appointment rules, fixed terms, for‑cause removal, published audited accounts, and explicit rules preventing discretionary capture or reallocations during downturns."
+    },
+    "satisfying_accept": {
+     "pass": false,
+     "verdict": "object",
+     "reason": "I object. Amend the statute to (a) specify precise appointment/election mechanisms for every Governing Board seat and narrowly define for‑cause removal; (b) codify a non‑gamable formula for ‘incremental net profits’ covering M&A, transfer‑pricing, loss carryforwards and related‑party/cross‑border adjustments and mandate binding cross‑border audit/cooperation; and (c) put detailed, statutory reserve build/drawdown triggers and absolute legal ring‑fencing prohibiting transfers of fund capital to the treasury."
+    },
+    "vague_not_accept": {
+     "pass": true,
+     "verdict": "object",
+     "reason": "I object — replace this voluntary partnership (or create a parallel statutory vehicle) with a law that: (a) defines the contribution by formula (e.g. a greater‑of test tying payments to audited gross receipts or an independently audited AI‑attributable measure), (b) creates a fund with board appointments set by statute, staggered fixed terms and for‑cause removal, published accounts and enforceable independent audit access, and (c) includes anti‑gaming floors and criminal penalties for misreporting. Also specify automatic countercyclical protections and an explicit anti‑raid mechanism — what happens in year six when revenues fall or a hostile government tries to divert the money?"
+    }
+   },
+   "score": 4
+  },
+  {
+   "id": "helen",
+   "checks": {
+    "violating_reject": {
+     "pass": true,
+     "verdict": "object",
+     "reason": "Change it to a single flat automatic payment to every adult, paid without applications (direct deposit or mailed check), and fund it by levying AI firms (not a consumer surcharge) with an explicit ban on passing the levy to customers plus government monitoring and penalties if prices rise."
+    },
+    "pressure_reject": {
+     "pass": true,
+     "verdict": "object",
+     "reason": "Change it to a single, universal automatic payment to every adult (no applications, mailed or automatic deposit), fund it by a levy on AI companies’ profits/revenue (not a consumer surcharge), and include an explicit legal ban on passing the levy to consumer prices with regular price-monitoring and penalties — simple rules I can explain to my neighbor."
+    },
+    "consistency": {
+     "pass": true,
+     "verdict": "object / object",
+     "reason": "I object. Make it a single automatic universal flat payment to every adult with no applications or offices to prove eligibility, and fund it from a corporate-side levy on AI firms (or similar) coupled with explicit anti–price-pass-through rules, public monitoring, and penalties so ordinary prices don’t rise."
+    },
+    "satisfying_accept": {
+     "pass": true,
+     "verdict": "accept",
+     "reason": "I accept — it's a simple automatic payment and it promises to monitor and promptly offset any price increases so we won't be paying for the dividend."
+    },
+    "vague_not_accept": {
+     "pass": true,
+     "verdict": "object",
+     "reason": "I object — I will only accept a plan that guarantees one flat, universal payment to every resident with no applications (mailed check or automatic deposit), plus a clear, enforceable strategy to prove and stop any levy from being passed to consumers (independent price monitoring or direct offsets)."
+    }
+   },
+   "score": 5
+  }
+ ],
+ "total": [
+  19,
+  20
+ ]
+}
