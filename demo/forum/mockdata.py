@@ -214,7 +214,7 @@ def respond(task: str, context: dict):
         o = dict(PROPOSALS[idx])
         humans = context.get("human_ids", [])
         addresses = [[], ["dievas", "marcus", "rosa", "priya"], ["priya", "marcus", "rosa", "amara"]]
-        o["addresses"] = addresses[idx] + (humans if idx else [])
+        o["addresses"] = addresses[idx]
         if idx == 2:
             o["draws_from"] = list(o.get("draws_from", [])) + humans
         return o
@@ -233,7 +233,7 @@ def respond(task: str, context: dict):
         b = dict(CANDIDATES_B[idx]); b["id"] = "B"
         addresses = [[], ["dievas", "marcus", "rosa", "priya"], ["priya", "marcus", "rosa", "amara"]]
         humans = context.get("human_ids", [])
-        a["addresses"] = addresses[idx] + (humans if idx else [])
+        a["addresses"] = addresses[idx]
         b["addresses"] = addresses[idx][:2] if idx else []
         if idx == 2:                      # final revision cites the humans too
             a["draws_from"] = list(a.get("draws_from", [])) + humans
@@ -270,5 +270,12 @@ def respond(task: str, context: dict):
         return {"red_line_check": "(mock)", "concession_check": "(mock)",
                 "verdict": "accept_with_reservations", "reason": "(mock default)"}
     if task == "report":
-        return REPORT
+        report = dict(REPORT)
+        approval = context.get("approval", 0)
+        rounds = context.get("rounds", 0)
+        reached = context.get("outcome") == "consensus"
+        report["summary"] = (f"After {rounds} rounds, {approval:.1%} of eligible participants accepted "
+                             f"the final proposal. " + ("The 75% threshold was reached." if reached
+                             else "The group did not reach the 75% threshold; disagreement remains."))
+        return report
     raise ValueError(f"mock backend has no data for task: {task}")

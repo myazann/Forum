@@ -107,6 +107,15 @@ def user_by_token(token: str) -> dict | None:
     return dict(r) if r else None
 
 
+def rename_user(user_id: str, handle: str):
+    try:
+        conn().execute("UPDATE users SET handle=? WHERE id=?", (handle, user_id))
+        conn().commit()
+    except sqlite3.IntegrityError:
+        conn().rollback()
+        raise ValueError("That name is already in use. Choose another name.")
+
+
 # ---- deliberations --------------------------------------------------------
 
 def create_deliberation(delib_id: str, topic: str, status: str, created_by: str,

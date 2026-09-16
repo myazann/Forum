@@ -1,5 +1,14 @@
 # Forum — Strategy & Build Plan
 
+> **Current implementation, 16 September 2026:** [PRODUCT.md](PRODUCT.md) is the
+> authoritative contract for the web experience. It now includes a labeled,
+> deterministic five-minute example, a participant-first room, private response
+> shaping, version-bound submissions, an eligible-participant threshold, a
+> deadline scheduler, and My discussions. New web discussions use real people;
+> synthetic persona work is deferred. The July research vision below is retained
+> as historical context. Its elections, position-card confirmation, public raw
+> audit, and persona-first demo are not requirements for the current release.
+
 *Working document, July 2026. Companion to the "Idea" page from the Worldbuilding AI Futures course and the Existential Hope competition submission. The product/user-journey side — entry points, feed, follows, data model, phased platform plan — lives in [PRODUCT.md](PRODUCT.md).*
 
 ## 1. What we are building

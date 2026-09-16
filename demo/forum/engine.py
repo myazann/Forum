@@ -12,7 +12,7 @@ The loop, per participant (the original blueprint):
 State machine:
 
     GATHERING -> (landscape, internal) -> OFFERED -> EVALUATED -> OFFERED …
-              -> CONSENSUS | DISSENSUS
+              -> CONSENSUS | DISSENSUS | INSUFFICIENT
 
 Design rules that survive every iteration:
 - Opinions are instant: a participant's own words enter the room verbatim,
@@ -20,8 +20,8 @@ Design rules that survive every iteration:
 - Every human gets a personal opposing-views summary before any offer.
 - One offer per round; responses are binary + text: accept, or object with
   the words that must change. Objections are the fuel of revision.
-- Offers carry `addresses` — whose objections this revision answers — so
-  "your objection was addressed" is data, not inference.
+- Offers link persistent concerns to quoted proposal clauses and a mediator
+  assessment. Participants judge for themselves whether the change is enough.
 - Every LLM call goes through `_call` into a replayable audit log.
 - Dissensus after max_rounds is a valid product, not a failure.
 
@@ -30,6 +30,7 @@ advance and persists via to_dict()/from_dict().
 """
 
 import json
+import math
 import threading
 import time
 import uuid
@@ -64,6 +65,10 @@ class Deliberation:
         self.audit: list[dict] = []
         self.error: str | None = None
         self.progress: dict = {}
+        self.mode = "live"
+        self.context = ""
+        self.scenario = {}
+        self.concerns = []
         self._audit_lock = threading.Lock()
 
     # ---- plumbing -------------------------------------------------------
@@ -104,6 +109,9 @@ class Deliberation:
             [{"id": o["id"], "opinion": o["opinion"]} for o in self.opinions],
             ensure_ascii=False, indent=1)
 
+    def _question(self) -> str:
+        return self.topic + ("\nContext: " + self.context if self.context else "")
+
     # ---- GATHERING ------------------------------------------------------
 
     def gen_persona_opinions(self):
@@ -130,14 +138,14 @@ class Deliberation:
     def begin(self):
         self._progress("landscape", "Reading the room — mapping every opinion")
         self.landscape = self._call("landscape", prompts.LANDSCAPE.format(
-            topic=self.topic, opinions=self._opinions_json(),
+            topic=self._question(), opinions=self._opinions_json(),
             steelman_task="", steelman_schema="", json_only=prompts.JSON_ONLY,
         ), {})
 
         def one_opposing(item):
             uid, h = item["uid"], item["h"]
             out = self._call("opposing", prompts.OPPOSING_ONE.format(
-                topic=self.topic,
+                topic=self._question(),
                 landscape=json.dumps(self.landscape, ensure_ascii=False),
                 name=h["name"], opinion=h["opinion"],
                 json_only=prompts.JSON_ONLY), {"uid": uid})
@@ -159,8 +167,10 @@ class Deliberation:
         revision = ""
         if self.rounds:
             prev = self.rounds[-1]
-            objections = [f"- {r['id']}: {r['objection']}"
-                          for r in prev["responses"] if r["response"] == "object"]
+            objections = [f"- concern_id={c['id']}: {c['text']}" for c in self.concerns]
+            if not objections:  # Older saved rooms and the persona research runner.
+                objections = [f"- {r['id']}: {r['objection']}"
+                              for r in prev["responses"] if r["response"] == "object"]
             revision = prompts.OFFER_REVISION.format(
                 round_num=prev["number"],
                 prev_offer=json.dumps(prev["offer"], ensure_ascii=False),
@@ -169,13 +179,23 @@ class Deliberation:
                 objections="\n".join(objections) or "(none recorded)")
         self._progress("offer", "The mediator is drafting an offer for the whole room")
         offer = self._call("offer", prompts.OFFER.format(
-            topic=self.topic, opinions=self._opinions_json(),
+            topic=self._question(), opinions=self._opinions_json(),
             landscape=json.dumps(self.landscape, ensure_ascii=False),
             revision_context=revision, json_only=prompts.JSON_ONLY,
         ), {"round_num": round_num, "human_ids": list(self.humans)})
         offer["addresses"] = [x for x in offer.get("addresses", []) if isinstance(x, str)]
+        offer["id"] = uuid.uuid4().hex
+        valid_concerns = {c["id"] for c in self.concerns}
+        offer["changes"] = [c for c in offer.get("changes", []) if isinstance(c, dict)
+                            and c.get("concern_id") in valid_concerns
+                            and c.get("status") in ("addressed", "partly_addressed", "not_addressed")
+                            and isinstance(c.get("proposal_quote"), str)
+                            and c["proposal_quote"].strip()
+                            and c["proposal_quote"] in offer["text"]
+                            and isinstance(c.get("explanation"), str)]
         self.rounds.append({"number": round_num, "offer": offer, "responses": [],
-                            "approval": None, "approval_by_cluster": {}, "outcome": None})
+                            "approval": None, "approval_by_cluster": {}, "outcome": None,
+                            "eligible_ids": list(self.humans) + [c["id"] for c in self.cards]})
         self.status = "offered"
 
     # ---- RESPONSES ------------------------------------------------------
@@ -227,12 +247,24 @@ class Deliberation:
                                   or ("(accepted)" if r["response"] == "accept" else "(no reason given)")})
         rnd["responses"] = responses
 
-        n = len(responses)
+        for r in responses:
+            if r["response"] == "object" and not any(
+                    c["user_id"] == r["id"] and c["text"] == r["objection"] for c in self.concerns):
+                self.concerns.append({"id": uuid.uuid4().hex, "user_id": r["id"],
+                                      "round": rnd["number"], "text": r["objection"]})
+
+        n = len(rnd.get("eligible_ids", [])) or len(self.humans) + len(self.cards)
         accepts = sum(1 for r in responses if r["response"] == "accept")
         rnd["approval"] = accepts / n if n else 0.0
         rnd["approval_by_cluster"] = self._approval_by_cluster(responses)
 
-        if rnd["approval"] >= self.threshold:
+        if len(responses) < math.ceil(n * self.threshold):
+            rnd["outcome"] = "insufficient"
+            self.status = "insufficient"
+            self.report = {"summary": f"Only {len(responses)} of {n} eligible participants responded. There are not enough responses to conclude this discussion.",
+                           "agreed": [], "contested": ["The proposal has not received a representative response from this group."],
+                           "evolution": "No agreement or disagreement is inferred from missing responses."}
+        elif rnd["approval"] >= self.threshold:
             rnd["outcome"] = "consensus"
             self._finish("consensus")
         elif rnd["number"] >= self.max_rounds:
@@ -259,24 +291,24 @@ class Deliberation:
         self._progress("report", "Writing the closing report")
         history = [{"round": r["number"], "proposal": r["offer"],
                     "approval": r["approval"],
-                    "ratings": [{"id": x["id"],
-                                 "verdict": x["response"],
+                    "ratings": [{"verdict": x["response"],
                                  "reason": x["objection"]} for x in r["responses"]]}
                    for r in self.rounds]
         self.report = self._call("report", prompts.REPORT.format(
-            topic=self.topic, outcome=outcome,
+            topic=self._question(), outcome=outcome,
             approval_pct=round(final["approval"] * 100),
             threshold_pct=round(self.threshold * 100),
             num_rounds=len(self.rounds),
             history=json.dumps(history, ensure_ascii=False),
-            json_only=prompts.JSON_ONLY), {"outcome": outcome})
+            json_only=prompts.JSON_ONLY), {"outcome": outcome, "approval": final["approval"],
+                                         "rounds": len(self.rounds), "title": final["offer"]["title"]})
         self.status = outcome
 
     # ---- serialization --------------------------------------------------
 
     _FIELDS = ("id", "topic", "threshold", "max_rounds", "persona_variant",
                "include_personas", "status", "humans", "opinions", "landscape",
-               "rounds", "report", "audit", "error")
+               "rounds", "report", "audit", "error", "mode", "context", "scenario", "concerns")
 
     def to_dict(self) -> dict:
         d = {k: getattr(self, k) for k in self._FIELDS}

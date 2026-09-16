@@ -1,217 +1,224 @@
-"""Forum server — zero-prior entry.
+"""Forum's participant web app. Run one uvicorn worker with SQLite."""
 
-Run:  uvicorn server:app --port 8710   (from demo/, with the venv active)
-
-No login, no signup: the first time someone acts, they silently become a
-citizen with a generated pseudonym (cookie session). They can pick a nicer
-pseudonym any time via /api/login. Two citizen verbs per deliberation:
-share an opinion, respond to the offer (accept / object).
-"""
-
+from contextlib import asynccontextmanager
+from pathlib import Path
 import random
+import re
+import threading
 
 from fastapi import FastAPI, HTTPException, Request, Response
 from fastapi.responses import FileResponse
 from fastapi.staticfiles import StaticFiles
-from pathlib import Path
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 
 from forum import db, service
-from forum.personas import DEFAULT_TOPIC
 
-app = FastAPI(title="Forum")
+
+@asynccontextmanager
+async def lifespan(app):
+    db.init()
+    stop = threading.Event()
+
+    def scheduler():
+        while not stop.is_set():
+            service.tick()
+            stop.wait(1)
+    worker = threading.Thread(target=scheduler, daemon=True)
+    worker.start()
+    yield
+    stop.set()
+    worker.join(timeout=2)
+
+
+app = FastAPI(title="Forum", lifespan=lifespan)
 WEB_DIR = Path(__file__).parent / "web"
 COOKIE = "forum_token"
-
-db.init()
-
-ADJ = ["quiet", "amber", "cedar", "bright", "steady", "plain", "keen", "mellow"]
-NOUN = ["harbor", "meadow", "signal", "lantern", "bridge", "orchard", "compass", "commons"]
+ADJ = ["quiet", "amber", "cedar", "bright", "steady", "keen", "mellow"]
+NOUN = ["harbor", "meadow", "lantern", "bridge", "orchard", "compass", "commons"]
 
 
-def _fresh_handle() -> str:
-    for _ in range(50):
-        h = f"{random.choice(ADJ)}-{random.choice(NOUN)}-{random.randint(10, 99)}"
-        if not db.user_by_handle(h):
-            return h
-    return f"citizen-{random.randint(1000, 9999)}"
-
-
-def current_user(request: Request) -> dict | None:
+def current_user(request):
     token = request.cookies.get(COOKIE)
     return db.user_by_token(token) if token else None
 
 
-def citizen(request: Request, response: Response) -> dict:
-    """The zero-prior identity: acting makes you a citizen, silently."""
-    u = current_user(request)
-    if not u:
-        u = db.create_user(_fresh_handle())
-        response.set_cookie(COOKIE, u["token"], httponly=True, samesite="lax",
-                            max_age=60 * 60 * 24 * 365)
-    return u
+def citizen(request, response):
+    user = current_user(request)
+    if not user:
+        import uuid
+        handle = f"{random.choice(ADJ)}-{random.choice(NOUN)}-{uuid.uuid4().hex[:5]}"
+        user = db.create_user(handle)
+        response.set_cookie(COOKIE, user["token"], httponly=True, samesite="lax",
+                            secure=request.url.scheme == "https", max_age=60 * 60 * 24 * 365)
+    return user
 
 
-class LoginBody(BaseModel):
-    handle: str
+def required_user(request):
+    user = current_user(request)
+    if not user:
+        raise HTTPException(401, "Your session is not available in this browser. Open your discussion in the browser you used before.")
+    return user
 
 
-@app.post("/api/login")
-def login(body: LoginBody, response: Response):
-    """Optional: claim a pseudonym you prefer (also how you return on a new
-    device, pilot-grade trust model)."""
-    handle = body.handle.strip()[:40]
-    if len(handle) < 2:
-        raise HTTPException(400, "Pseudonym must be at least 2 characters")
-    user = db.user_by_handle(handle) or db.create_user(handle)
-    response.set_cookie(COOKIE, user["token"], httponly=True, samesite="lax",
-                        max_age=60 * 60 * 24 * 365)
-    return {"id": user["id"], "handle": user["handle"]}
+def call(fn):
+    try:
+        result = fn()
+        return result if result is not None else {"ok": True}
+    except LookupError as e:
+        raise HTTPException(404, str(e))
+    except PermissionError as e:
+        raise HTTPException(403, str(e))
+    except ValueError as e:
+        raise HTTPException(409, str(e))
 
 
-@app.post("/api/logout")
-def logout(response: Response):
-    response.delete_cookie(COOKIE)
-    return {"ok": True}
+@app.middleware("http")
+async def private_state(request, call_next):
+    response = await call_next(request)
+    if request.url.path.startswith("/api/"):
+        response.headers["Cache-Control"] = "no-store"
+    elif request.url.path.startswith("/static/"):
+        response.headers["Cache-Control"] = "no-cache"
+    return response
 
 
 @app.get("/api/me")
 def me(request: Request):
     u = current_user(request)
     return {"user": {"id": u["id"], "handle": u["handle"]} if u else None,
-            "default_topic": DEFAULT_TOPIC}
+            "live_available": service.live_available()}
 
 
-# ---- deliberations --------------------------------------------------------
+class NameBody(BaseModel):
+    handle: str = Field(min_length=2, max_length=40)
+
+
+@app.post("/api/me/name")
+def rename(body: NameBody, request: Request):
+    user = required_user(request)
+    handle = body.handle.strip().lower()
+    if not re.fullmatch(r"[a-z0-9][a-z0-9_-]{1,39}", handle):
+        raise HTTPException(400, "Use 2–40 letters, numbers, hyphens or underscores.")
+    call(lambda: db.rename_user(user["id"], handle))
+    return {"id": user["id"], "handle": handle}
+
+
+@app.post("/api/login")
+def login():
+    raise HTTPException(410, "A public name cannot be used to sign in. Your identity is saved in the browser where you participated.")
+
+
+@app.post("/api/examples")
+def create_example(request: Request, response: Response):
+    user = citizen(request, response)
+    return {"id": service.create_example(user)}
+
 
 class CreateBody(BaseModel):
-    topic: str = ""
-    include_personas: bool = True
-    min_participants: int = 1
-    phase_hours: float = 0
-
-
-@app.get("/api/deliberations")
-def list_deliberations():
-    return {"deliberations": db.list_deliberations()}
+    topic: str = Field(min_length=10, max_length=240)
+    context: str = Field(default="", max_length=1600)
+    intake_hours: float = Field(default=24, ge=1/60, le=168)
+    phase_hours: float = Field(default=24, ge=1/60, le=168)
 
 
 @app.post("/api/deliberations")
-def create_deliberation(body: CreateBody, request: Request, response: Response):
+def create(body: CreateBody, request: Request, response: Response):
     user = citizen(request, response)
-    delib_id = service.create(user, body.topic, body.include_personas,
-                              body.min_participants, body.phase_hours)
-    return {"id": delib_id}
+    return {"id": call(lambda: service.create(user, body.topic, body.context,
+                                             body.intake_hours, body.phase_hours))}
+
+
+@app.get("/api/deliberations")
+def discussions():
+    # Examples belong to the visitor who started them, not a global demo feed.
+    return {"deliberations": [d for d in db.list_deliberations() if d["config"].get("mode") == "live"]}
 
 
 @app.get("/api/d/{delib_id}")
-def get_state(delib_id: str, request: Request):
-    v = service.view(delib_id, current_user(request))
-    if v is None:
-        raise HTTPException(404, "No such deliberation")
-    return v
+def state(delib_id: str, request: Request):
+    return call(lambda: service.view(delib_id, current_user(request)))
 
 
 @app.get("/api/d/{delib_id}/audit")
-def get_audit(delib_id: str):
-    return {"audit": service.audit(delib_id)}
+def audit(delib_id: str):
+    return {"audit": call(lambda: service.audit(delib_id))}
 
 
 @app.get("/api/me/feed")
-def my_feed(request: Request):
-    u = current_user(request)
-    if not u:
-        return {"needs_you": [], "outcomes": [], "notifications": [], "unseen": 0}
-    return service.feed(u)
+def feed(request: Request):
+    user = current_user(request)
+    return service.feed(user) if user else {"needs_you": [], "waiting": [], "outcomes": [], "notifications": [], "unseen": 0}
 
 
 @app.post("/api/me/seen")
-def mark_seen(request: Request):
-    u = current_user(request)
-    if u:
-        db.mark_seen(u["id"])
+def seen(request: Request):
+    user = required_user(request)
+    db.mark_seen(user["id"])
     return {"ok": True}
 
 
 @app.get("/api/users/{handle}")
-def user_profile(handle: str):
-    p = service.profile(handle)
-    if p is None:
-        raise HTTPException(404, "No such pseudonym")
-    return p
+def profile(handle: str, request: Request):
+    return call(lambda: service.profile(handle, current_user(request)))
 
-
-# ---- the two citizen verbs ------------------------------------------------
 
 class PositionBody(BaseModel):
-    text: str
+    text: str = Field(default="", max_length=5000)
+    choice: str | None = None
 
 
 class RespondBody(BaseModel):
-    response: str            # accept | object
-    objection: str = ""
-
-
-def _wrap(fn):
-    try:
-        fn()
-    except PermissionError as e:
-        raise HTTPException(403, str(e))
-    except ValueError as e:
-        raise HTTPException(409, str(e))
-    return {"ok": True}
+    response: str
+    objection: str = Field(default="", max_length=3000)
+    round_number: int = Field(ge=1)
+    proposal_id: str = Field(min_length=1, max_length=100)
 
 
 @app.post("/api/d/{delib_id}/position")
 def position(delib_id: str, body: PositionBody, request: Request, response: Response):
     user = citizen(request, response)
-    if not body.text.strip():
-        raise HTTPException(400, "Say what you think first")
-    return _wrap(lambda: service.take_position(delib_id, user, body.text.strip()))
+    return call(lambda: service.take_position(delib_id, user, body.text, body.choice))
+
+
+@app.post("/api/d/{delib_id}/continue")
+def next_step(delib_id: str, request: Request):
+    return call(lambda: service.continue_journey(delib_id, required_user(request)))
 
 
 @app.post("/api/d/{delib_id}/respond")
-def respond(delib_id: str, body: RespondBody, request: Request, response: Response):
-    user = citizen(request, response)
-    return _wrap(lambda: service.respond(delib_id, user, body.response, body.objection))
+def respond(delib_id: str, body: RespondBody, request: Request):
+    return call(lambda: service.respond(delib_id, required_user(request), body.response,
+                                        body.objection, body.round_number, body.proposal_id))
 
 
 @app.post("/api/d/{delib_id}/begin")
-def begin(delib_id: str, request: Request, response: Response):
-    user = citizen(request, response)
-    return _wrap(lambda: service.begin_now(delib_id, user))
+def begin(delib_id: str, request: Request):
+    return call(lambda: service.begin_now(delib_id, required_user(request)))
 
 
 @app.post("/api/d/{delib_id}/retry")
-def retry(delib_id: str):
-    service.retry(delib_id)
-    return {"ok": True}
+def retry(delib_id: str, request: Request):
+    return call(lambda: service.retry(delib_id, required_user(request)))
 
-
-# ---- pages ----------------------------------------------------------------
 
 app.mount("/static", StaticFiles(directory=WEB_DIR / "static"), name="static")
 
 
-def _page(name: str):
+def page(name):
     return FileResponse(WEB_DIR / name, headers={"Cache-Control": "no-cache"})
 
 
 @app.get("/")
-def home():
-    return _page("home.html")
-
-
 @app.get("/floor")
-def floor():
-    return _page("home.html")            # merged: home IS the floor of topics
+def home():
+    return page("home.html")
 
 
 @app.get("/u/{handle}")
 def profile_page(handle: str):
-    return _page("profile.html")
+    return page("profile.html")
 
 
 @app.get("/d/{delib_id}")
 def room(delib_id: str):
-    return _page("room.html")
+    return page("room.html")

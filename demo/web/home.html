@@ -1,118 +1,274 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="color-scheme" content="light">
-<title>The Forum</title>
-<link rel="stylesheet" href="/static/forum.css">
-<style>
-  .delib { display: flex; gap: 14px; align-items: center; padding: 14px 0;
-           border-top: 1px dashed var(--line); }
-  .delib:first-of-type { border-top: 0; }
-  .delib .t { flex: 1; min-width: 0; }
-  .delib .topic { font-weight: 650; }
-  .delib .meta { font-size: 12.5px; color: var(--muted); margin-top: 2px; }
-</style>
-</head>
-<body>
-<div class="topbar"><div class="topbar-in" id="shellBar"></div></div>
-
-<div class="wrap">
-  <p class="lede">Share what you think on a topic. See where everyone stands — especially the side opposed to you. Then the Forum's mediator offers a solution built for consensus: accept it, or object in your own words and watch the next offer answer you.</p>
-
-  <section id="needsArea"></section>
-
-  <div class="card">
-    <h2>Topics on the floor <span class="hint">— jump in, no account needed</span></h2>
-    <div id="delibList"><div class="empty">Loading…</div></div>
-  </div>
-
-  <div class="card">
-    <h2>Raise your own topic</h2>
-    <label for="topicInput">The question the group should answer</label>
-    <textarea id="topicInput" rows="3"></textarea>
-    <div class="row" style="margin-top:10px">
-      <label style="margin:0;font-weight:450"><input type="checkbox" id="personasChk" checked>
-        include the 8 simulated citizens</label>
-      <label style="margin:0;font-weight:450">starts when
-        <input type="number" id="quorumInput" value="1" min="1" max="50" style="width:64px"> have spoken</label>
-      <label style="margin:0;font-weight:450">rounds close after
-        <input type="number" id="hoursInput" value="0" min="0" step="0.5" style="width:70px"> h
-        <span class="hint">(0 = wait for everyone)</span></label>
-    </div>
-    <div class="row"><button class="btn" id="createBtn" onclick="createDelib()">Open the deliberation</button></div>
-    <div id="createErr" role="alert" style="display:none;color:var(--bad);font-weight:600;margin-top:10px"></div>
-    <div class="ideal">Disagreement is data, not failure: if the group can't honestly converge, the Forum publishes the map of the disagreement instead.</div>
-  </div>
-</div>
-
-<script src="/static/forum.js"></script>
-<script>
-const short = (t) => t.length > 110 ? t.slice(0, 110) + "…" : t;
-
-async function boot() {
-  const me = await shell("home").catch(() => null);
-  if (window.SERVER_DOWN) { $("delibList").innerHTML = serverDownCard(); return; }
-  if (!$("topicInput").value) $("topicInput").value = window.DEFAULT_TOPIC || "";
-  renderList();
-  if (me) renderNeeds();
-}
-
-async function renderNeeds() {
-  try {
-    const f = await api("/api/me/feed");
-    if (!f.needs_you.length) { $("needsArea").innerHTML = ""; return; }
-    $("needsArea").innerHTML = `<div class="band" style="margin-top:0">Waiting for you</div>` +
-      f.needs_you.map(n => `<a class="feedcard hero" href="/d/${n.id}" style="text-decoration:none;color:inherit">
-        <div class="t"><div class="topic">${esc(short(n.topic))}</div>
-          <div class="what"><b>${esc(n.action[0].toUpperCase() + n.action.slice(1))}</b>${n.closes_at ? ` · ${closesIn(n.closes_at)}` : ""}</div></div>
-        <span class="btn sm">Go</span>
-      </a>`).join("");
-    api("/api/me/seen", {});
-  } catch {}
-}
-
-async function renderList() {
-  let deliberations;
-  try { ({ deliberations } = await api("/api/deliberations")); }
-  catch { $("delibList").innerHTML = serverDownCard(); return; }
-  $("delibList").innerHTML = deliberations.length ? deliberations.map(d => {
-    const s = d.status === "gathering" ? ["s-gathering", "gathering opinions"]
-      : d.status === "consensus" ? ["s-consensus", "consensus"]
-      : d.status === "dissensus" ? ["s-dissensus", "dissensus"]
-      : d.status === "offered" ? ["s-live", "offer on the table"]
-      : ["s-live", "deliberating"];
-    const progress = d.rounds
-      ? ` · round ${d.rounds}${d.last_approval != null ? ` · ${pct(d.last_approval)}% accepted` : ""}` : "";
-    return `<div class="delib">
-      <div class="t"><div class="topic">${esc(short(d.topic))}</div>
-        <div class="meta">${d.participant_count} citizen(s)${d.config.include_personas ? " + 8 simulated" : ""}${progress}</div></div>
-      <span class="pill ${s[0]}">${s[1]}</span>
-      <a class="btn sm ghost" href="/d/${d.id}">${d.status === "gathering" ? "Speak" : "Watch"}</a>
-    </div>`;
-  }).join("") : `<div class="empty">Quiet right now — raise the first topic below.</div>`;
-}
-
-async function createDelib() {
-  const btn = $("createBtn");
-  btn.disabled = true; btn.textContent = "Opening…";
-  try {
-    const { id } = await api("/api/deliberations", {
-      topic: $("topicInput").value,
-      include_personas: $("personasChk").checked,
-      min_participants: parseInt($("quorumInput").value || "1", 10),
-      phase_hours: parseFloat($("hoursInput").value || "0"),
-    });
-    location.href = "/d/" + id;
-  } catch (e) {
-    btn.disabled = false; btn.textContent = "Open the deliberation";
-    $("createErr").textContent = "Couldn't open it: " + e.message;
-    $("createErr").style.display = "";
-  }
-}
-boot();
-setInterval(renderList, 6000);
-</script>
-</body>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="color-scheme" content="light" />
+    <title>Forum — Find a way forward, together</title>
+    <link rel="stylesheet" href="./static/forum.css?v=2" />
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="shell">
+      <div class="shell-inner" id="shellBar">
+        <a class="brand" href="/">forum</a>
+      </div>
+    </header>
+    <main class="wrap" id="main">
+      <div id="connection" role="status"></div>
+      <section
+        class="returning"
+        id="my-discussions"
+        hidden
+        aria-label="My discussions"
+      >
+        <div class="section-heading">
+          <h2>Pick up where you left off.</h2>
+          <p>Your place is saved in this browser.</p>
+        </div>
+        <div id="myRooms"></div>
+        <div id="updates"></div>
+      </section>
+      <section class="hero">
+        <div>
+          <span class="eyebrow">Different views. A shared way forward.</span>
+          <h1>We don't have to agree<br />to begin.</h1>
+          <p class="intro">
+            Share what matters to you. Understand what matters to others. Shape
+            a proposal more of us can live with.
+          </p>
+          <div class="actions">
+            <button class="btn" onclick="startExample(this)">
+              Try a five-minute example
+              <span class="arrow" aria-hidden="true">↗</span></button
+            ><a
+              class="btn text"
+              href="#start-group"
+              onclick="document.getElementById('start-group').open=true"
+              >Bring your own question →</a
+            >
+          </div>
+          <p class="caption">
+            No signup. No cost. A complete journey from views to a result.
+          </p>
+        </div>
+        <aside
+          class="preview"
+          aria-label="An example of how a concern changes a proposal"
+        >
+          <span class="mini-label">A Saturday on Market Street</span>
+          <h3>A quieter street.<br />But how do shops get deliveries?</h3>
+          <div class="preview-note">
+            <strong>A concern from the room</strong>
+            <p>
+              “I'd support the trial if shops can still get their morning
+              deliveries.”
+            </p>
+          </div>
+          <div class="connector" aria-hidden="true">↓</div>
+          <div class="preview-note resolved">
+            <strong>A concrete change</strong>
+            <p>The revised proposal keeps deliveries open until 10 a.m.</p>
+          </div>
+          <div class="preview-foot">
+            <span class="dot" aria-hidden="true"></span>Illustrative example ·
+            Every change has a reason
+          </div>
+        </aside>
+      </section>
+      <section
+        class="principles"
+        id="how-it-works"
+        aria-label="How Forum works"
+      >
+        <div class="principle">
+          <span class="number">01</span>
+          <div>
+            <h3>Start with what matters.</h3>
+            <p>
+              Your view enters in your own words. There are no reply threads or
+              popularity contests.
+            </p>
+          </div>
+        </div>
+        <div class="principle">
+          <span class="number">02</span>
+          <div>
+            <h3>Make space for another view.</h3>
+            <p>
+              Find the common ground, then consider a concrete proposal with
+              honest tradeoffs.
+            </p>
+          </div>
+        </div>
+        <div class="principle">
+          <span class="number">03</span>
+          <div>
+            <h3>See what your concern changes.</h3>
+            <p>
+              Ask for a change. Follow the revision. Keep unresolved
+              disagreement in the result.
+            </p>
+          </div>
+        </div>
+      </section>
+      <section id="discovery" hidden>
+        <div class="section-heading">
+          <h2>Questions on the table.</h2>
+          <p>Join while views are open, or read how a discussion is going.</p>
+        </div>
+        <div id="publicRooms" class="room-list"></div>
+      </section>
+      <details class="create-section" id="start-group">
+        <summary>Have a question for your group?</summary>
+        <p class="intro" style="margin-top: 14px">
+          Start with a clear question and invite at least two other people.
+          Views stay open until the deadline, or until you choose to begin
+          together.
+        </p>
+        <div id="liveNotice" class="notice" style="margin-top: 20px" hidden>
+          Live group discussions are not enabled here yet. The guided example is
+          ready to explore.
+        </div>
+        <form id="createForm" hidden>
+          <div class="field">
+            <label for="topicInput">What should your group decide?</label
+            ><input
+              type="text"
+              id="topicInput"
+              minlength="10"
+              maxlength="240"
+              required
+              placeholder="Should our neighbourhood try a monthly car-free Sunday?"
+            />
+          </div>
+          <div class="field">
+            <label for="contextInput"
+              >What should people know?
+              <span class="muted">Optional</span></label
+            ><textarea
+              id="contextInput"
+              rows="3"
+              maxlength="1600"
+              placeholder="Why this matters, who is involved, and what the result will be used for."
+            ></textarea>
+          </div>
+          <div class="field">
+            <label for="timingInput">How will you take part?</label
+            ><select id="timingInput">
+              <option value="24">
+                Over the next few days · 24 hours for each step
+              </option>
+              <option value="0.166666667">
+                Together now · 10 minutes for each step
+              </option>
+            </select>
+            <p class="help">
+              At least three people must share a view. Agreement needs 75% of
+              eligible participants. This is an advisory discussion.
+            </p>
+          </div>
+          <div class="actions">
+            <button class="btn" type="submit">
+              Create discussion & get invite link
+              <span aria-hidden="true">↗</span>
+            </button>
+          </div>
+          <p class="help">
+            Opinions are visible under a pseudonym. Acceptance choices stay
+            private; objections may be summarized without attribution.
+          </p>
+          <div id="createError" role="alert"></div>
+        </form>
+      </details>
+      <footer class="footer">
+        <span>Forum · A place to understand, then decide.</span
+        ><span>Agreement is useful. Honest disagreement is, too.</span>
+      </footer>
+    </main>
+    <div class="toast" id="toast" role="status" hidden></div>
+    <script src="./static/forum.js?v=2"></script>
+    <script>
+      let homeKey = "";
+      async function refreshHome() {
+        try {
+          const [feed, all] = await Promise.all([
+            api("/api/me/feed"),
+            api("/api/deliberations"),
+          ]);
+          const key = JSON.stringify([feed, all]);
+          if (key === homeKey) return;
+          homeKey = key;
+          const rooms = [...feed.needs_you, ...feed.waiting, ...feed.outcomes];
+          $("my-discussions").hidden = !rooms.length;
+          $("myRooms").innerHTML = ["needs_you", "waiting", "outcomes"]
+            .filter((k) => feed[k].length)
+            .map(
+              (k) =>
+                `<div class="step-kicker" style="margin-top:24px">${{ needs_you: "Your next step", waiting: "In progress", outcomes: "Completed" }[k]}</div><div class="room-list">${feed[k].map(discussionCard).join("")}</div>`,
+            )
+            .join("");
+          $("updates").innerHTML = feed.notifications.length
+            ? `<details class="notification-band"><summary>Recent updates (${feed.notifications.length})</summary>${feed.notifications
+                .slice(0, 8)
+                .map(
+                  (n) =>
+                    `<a class="notification" href="/d/${n.delib_id}">${esc(n.topic)}<br><span class="muted small">${n.kind === "outcome" ? esc(STATUS[n.payload.status]) : `Version ${n.payload.round} is ready`} · ${when(n.ts)}</span></a>`,
+                )
+                .join("")}</details>`
+            : "";
+          const mine = new Set(rooms.map((r) => r.id));
+          const publicRooms = all.deliberations.filter((d) => !mine.has(d.id));
+          $("discovery").hidden = !publicRooms.length;
+          $("publicRooms").innerHTML = publicRooms.map(discussionCard).join("");
+          $("connection").innerHTML = "";
+        } catch (e) {
+          $("connection").innerHTML = notice(e.message, true);
+        }
+      }
+      $("createForm").addEventListener("submit", async (e) => {
+        e.preventDefault();
+        const btn = e.submitter;
+        btn.disabled = true;
+        $("createError").innerHTML = "";
+        try {
+          const { id } = await api("/api/deliberations", {
+            topic: $("topicInput").value,
+            context: $("contextInput").value,
+            intake_hours: Number($("timingInput").value),
+            phase_hours: Number($("timingInput").value),
+          });
+          removeDraft("forum:new-topic");
+          removeDraft("forum:new-context");
+          location.href = "/d/" + id;
+        } catch (err) {
+          $("createError").innerHTML = notice(err.message, true);
+          btn.disabled = false;
+        }
+      });
+      for (const [id, key] of [
+        ["topicInput", "forum:new-topic"],
+        ["contextInput", "forum:new-context"],
+      ]) {
+        $(id).value = readDraft(key) ?? "";
+        $(id).addEventListener("input", () => storeDraft(key, $(id).value));
+      }
+      shell()
+        .then(() => {
+          $("createForm").hidden = !LIVE_AVAILABLE;
+          $("liveNotice").hidden = LIVE_AVAILABLE;
+          refreshHome();
+        })
+        .catch((e) => {
+          $("connection").innerHTML = notice(e.message, true);
+        });
+      if (location.hash === "#start-group") $("start-group").open = true;
+      window.addEventListener("hashchange", () => {
+        if (location.hash === "#start-group") $("start-group").open = true;
+      });
+      setInterval(() => {
+        if (!document.hidden) refreshHome();
+      }, 6000);
+    </script>
+  </body>
 </html>
