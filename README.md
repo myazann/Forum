@@ -1,9 +1,14 @@
 # The Forum
 
-**An AI mediator that helps a group of people actually agree on something.**
+**The future of democracy: An AI-mediator that unites people.**
+
+Voting transmits about one bit of information every few years. Social media
+amplifies whoever is loudest. Forum is an attempt at a third thing: an AI that
+mediates at a scale no human facilitator could reach, looking for the
+inclusive middle rather than the winning side.
 
 You share your opinion on a topic. The Forum shows you where everyone else
-stands — especially the people who disagree with you. Then it offers one
+stands, especially the people who disagree with you. Then it offers one
 concrete solution built to be acceptable to the whole room. You accept it, or
 you object in your own words. Your objection goes into the next revision.
 Round after round, until a supermajority accepts, or the disagreement is
@@ -34,28 +39,6 @@ to a person.
      ↓
    consensus (75% accept)  |  dissensus (honest map of what divides you)
 ```
-
-A deliberation ships with 8 simulated citizens holding genuinely opposed
-positions, so a room is alive from the first second and you can try the whole
-loop alone.
-
-## Why it exists
-
-Voting transmits about one bit of information every few years. Social media
-amplifies whoever is loudest. Forum is an attempt at a third thing: an AI that
-mediates at a scale no human facilitator could reach, looking for the
-inclusive middle rather than the winning side.
-
-It comes out of the [Existential Hope worldbuilding
-course](https://worlds.existentialhope.com/) — a 2035 scenario where ordinary
-people steer the AI transition instead of watching it. The closest real
-research is DeepMind's [Habermas
-Machine](https://www.science.org/doi/10.1126/science.adq2852), which showed
-that an AI mediator's group statements were preferred to human mediators' by
-5,700 UK participants.
-
-Design notes live in [STRATEGY.md](STRATEGY.md) (the engine) and
-[PRODUCT.md](PRODUCT.md) (the product and user journey).
 
 ---
 
@@ -158,17 +141,4 @@ cd demo
 FORUM_BACKEND=openai-api ../demo-venv/bin/python -m forum.fidelity --variant v2
 ```
 
-Last run scored 19/20 across 4 of the 8 personas on `gpt-5-mini`, one probe set
-per persona, single run. It does not measure run-to-run variance or the other
-4 personas. The single failure was a defective probe, not a role-play failure:
-it omitted the board appointment rules that persona's red line requires.
-
 ---
-
-## Status
-
-A working prototype, not a deployed service. The loop runs end to end with
-real participants and simulated ones, it persists across restarts, and the
-identity model is pilot-grade (knowing a pseudonym means owning it). Topic
-following, account recovery, rate limits, and proof-of-personhood are not
-built yet.
